@@ -1,0 +1,77 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Registration page</title>
+<link rel="stylesheet" href="./style.css" />
+<link rel="stylesheet" href="./css/reg_form_style.css" />
+</head>
+<body>
+    <div>
+        <ul>
+            <li><a href="index.html">Main.page</a></li>
+            <li><a href="list_expert.html">Эксперты</a></li>
+            <li><a href="list_profess.php">Профессия</a>
+        </ul>
+    </div>
+<div class="sitplace"></div>
+<h1>Registration</h1>
+<hr/>
+<div class="button_menu">
+    <a href="./test.html" class="b1">Test</a>
+    <a href="./index.html" class="b1">Main</a>
+</div>
+<hr/>
+    <body class="reg_form_body">
+        <div>
+		<h2>Попробуйте ещё раз!</h2>
+        </div>
+	<div class="container">
+			<div class="tabs">
+				<div id="btn"></div>
+				<button type="button" class="toggle-btn" onclick="login()">Log In</button>
+				<button type="button" class="toggle-btn" onclick="registration()">Register</button>
+			</div>
+			<div class="social-icons">
+				<h2>Welcome!</h2>
+			</div>
+		
+		<form id="login" class="form" method="post" action="./php/login.php">
+            <input type="text" class="input-filed" name="username" placeholder="Имя пользователя">
+            <input type="text" class="input-filed" name="password" placeholder="Пароль">
+            <input type="checkbox" class="check-box"><span>Remember Password</span>
+            <button type="submit" class="submit-btn" onclick="javascript: submitform();">Log in</button>
+        </form>
+    
+        <form id="register" class="form" method="post" action="./php/add_users.php">
+            <input type="text" class="input-filed" name="username" placeholder="Имя пользователя">
+            <!-- <input type="email" class="input-filed" placeholder="Email Id"> -->
+            <input type="text" class="input-filed" name="password" placeholder="Пароль">
+            <input type="checkbox" class="check-box"><span>I agree to the terms & conditions</span>
+            <button type="submit" class="submit-btn" onclick="javascript: submitform();">Register</button>
+        </form>
+			</div>
+			<script>
+				var logIn = document.getElementById("login");
+				var register = document.getElementById("register");
+				var button = document.getElementById("btn");
+			
+				function registration() {
+				  logIn.style.left = "-400px";
+				  register.style.left = "50px";
+				  button.style.left = "110px";
+				}
+			
+				function login() {
+				  logIn.style.left = "50px";
+				  register.style.left = "450px";
+				  button.style.left = "0";
+				}
+				function submitform()
+				{
+				  document.register.submit();
+				}
+			  </script>
+		</body>
+	</body>
+</html>
