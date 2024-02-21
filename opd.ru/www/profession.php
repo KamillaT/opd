@@ -88,7 +88,7 @@
   </div> 
   <div class="card"> 
    <div class="imgBx" style="--clr:#8f63b6;"> 
-                <img src="./css/base.jpg" alt=""> 
+                <img src="./css/base.png" alt=""> 
             </div> 
    <div class="content"></div> 
   </div> 
