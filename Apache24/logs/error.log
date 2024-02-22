@@ -1,0 +1,25 @@
+Starting the 'Apache2.4' service
+(OS 5)拒绝访问。  : AH10012: Failed to open the 'Apache2.4' service
+Starting the 'Apache2.4' service
+(OS 5)拒绝访问。  : AH10012: Failed to open the 'Apache2.4' service
+The 'Apache2.4' service is restarting.
+Starting the 'Apache2.4' service
+[Thu Feb 22 11:11:20.023252 2024] [mpm_winnt:crit] [pid 11764:tid 356] (OS 2)系统找不到指定的文件。  : AH00378: Failed to start the 'Apache2.4' service
+Starting the 'Apache2.4' service
+[Thu Feb 22 11:12:05.625128 2024] [mpm_winnt:crit] [pid 17332:tid 356] (OS 2)系统找不到指定的文件。  : AH00378: Failed to start the 'Apache2.4' service
+Starting the 'Apache2.4' service
+[Thu Feb 22 11:13:26.434176 2024] [mpm_winnt:crit] [pid 2448:tid 384] (OS 2)系统找不到指定的文件。  : AH00378: Failed to start the 'Apache2.4' service
+[Thu Feb 22 11:36:30.025328 2024] [mpm_winnt:notice] [pid 20844:tid 352] AH00455: Apache/2.4.58 (Win64) configured -- resuming normal operations
+[Thu Feb 22 11:36:30.026882 2024] [mpm_winnt:notice] [pid 20844:tid 352] AH00456: Apache Lounge VS17 Server built: Jan 30 2024 19:01:23
+[Thu Feb 22 11:36:30.026882 2024] [core:notice] [pid 20844:tid 352] AH00094: Command line: 'D:\\User\\Documents\\GitHub\\opd\\Apache24\\bin\\httpd.exe -d D:/User/Documents/GitHub/opd/Apache24'
+[Thu Feb 22 11:36:30.033658 2024] [mpm_winnt:notice] [pid 20844:tid 352] AH00418: Parent: Created child process 22616
+[Thu Feb 22 11:36:30.497672 2024] [mpm_winnt:notice] [pid 22616:tid 356] AH00354: Child: Starting 64 worker threads.
+[Thu Feb 22 12:53:58.439764 2024] [mpm_winnt:notice] [pid 20844:tid 352] AH00424: Parent: Received restart signal -- Restarting the server.
+httpd.exe: Syntax error on line 186 of D:/User/Documents/GitHub/opd/Apache24/conf/httpd.conf: Can't locate API module structure `php8_module' in file D:/BaiduNetdiskDownload/php-8.3.3-Win32/php8apache2_4.dll: No error
+[Thu Feb 22 12:54:00.450733 2024] [mpm_winnt:notice] [pid 22616:tid 356] AH00364: Child: All worker threads have exited.
+[Thu Feb 22 13:20:50.514656 2024] [core:warn] [pid 12788:tid 356] AH00098: pid file D:/User/Documents/GitHub/opd/Apache24/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Thu Feb 22 13:20:50.620777 2024] [mpm_winnt:notice] [pid 12788:tid 356] AH00455: Apache/2.4.58 (Win64) PHP/8.3.3 configured -- resuming normal operations
+[Thu Feb 22 13:20:50.620777 2024] [mpm_winnt:notice] [pid 12788:tid 356] AH00456: Apache Lounge VS17 Server built: Jan 30 2024 19:01:23
+[Thu Feb 22 13:20:50.620777 2024] [core:notice] [pid 12788:tid 356] AH00094: Command line: 'D:\\User\\Documents\\GitHub\\opd\\Apache24\\bin\\httpd.exe -d D:/User/Documents/GitHub/opd/Apache24'
+[Thu Feb 22 13:20:50.624839 2024] [mpm_winnt:notice] [pid 12788:tid 356] AH00418: Parent: Created child process 12540
+[Thu Feb 22 13:20:51.058731 2024] [mpm_winnt:notice] [pid 12540:tid 352] AH00354: Child: Starting 64 worker threads.
