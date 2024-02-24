@@ -29,6 +29,16 @@
 <hr/>
 <div>
     <a href="#">Результаты тестирований</a>
+    <?php
+        $conn = new mysqli("localhost", "root", "", "users");
+        $username = $_SESSION['username'];
+        $result = $conn->query("SELECT * FROM user_data WHERE username = '$username'");
+        $row = $result->fetch_array(MYSQLI_ASSOC);
+        $state = $row['state'];
+        if ($state == 'Admin') {
+            echo '<a href="#">Редактировать статусы</a>';
+        }
+    ?>
 </div>
 </body>
 </html>
