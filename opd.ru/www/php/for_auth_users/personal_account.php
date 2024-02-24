@@ -13,9 +13,9 @@
 <div class="headerpage"></div>
     <div>
         <ul>
-            <li><a href="../../index.html">Main.page</a></li>
-            <li><a href="../../list_expert.html">Эксперты</a></li>
-            <li><a href="../../list_profess.php">Профессия</a>
+            <li><a href="index.php">Main.page</a></li>
+            <li><a href="list_expert.php">Эксперты</a></li>
+            <li><a href="list_profess.php">Профессия</a>
             <li style="float: right;"><a href="personal_account.php">Личный кабинет</a></li>
         </ul>
     </div>
@@ -23,10 +23,12 @@
 <h1>Привет, <?php echo $_SESSION['username'];?>!</h1>
 <hr/>
 <div class="button_menu">
-    <a href="../../test.html" class="b1">Test</a>
-    <a href="../../index.html" class="b1">Main</a>
+    <a href="test.php" class="b1">Test</a>
+    <a href="index.php" class="b1">Main</a>
 </div>
 <hr/>
-<h2 style="text-align: center;">Результаты тестирований:</h2>
+<div>
+    <a href="#">Результаты тестирований</a>
+</div>
 </body>
 </html>
