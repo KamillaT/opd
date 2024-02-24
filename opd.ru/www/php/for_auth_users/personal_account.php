@@ -5,7 +5,7 @@
 <html lang="ru">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Login success</title>
+<title>Personal account</title>
 <link rel="stylesheet" href="../../style.css" />
 <link rel="stylesheet" href="../../css/reg_form_style.css" />
 </head>
@@ -20,16 +20,13 @@
         </ul>
     </div>
     <div class="sitplace"></div>
-<h1>Вы вошли в свой аккаунт!</h1>
+<h1>Привет, <?php echo $_SESSION['username'];?>!</h1>
 <hr/>
 <div class="button_menu">
     <a href="../../test.html" class="b1">Test</a>
     <a href="../../index.html" class="b1">Main</a>
 </div>
 <hr/>
-<div>
-<h2 style="text-align: center;">Успешно! Текущий сеанс: <a href="personal_account.php"><?php echo $_SESSION['username'];?></a></h2>
-<h2><a href="../logout.php">Logout</a></h2>
-</div>
+<h2 style="text-align: center;">Результаты тестирований:</h2>
 </body>
 </html>
