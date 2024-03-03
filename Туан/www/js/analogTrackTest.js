@@ -23,10 +23,10 @@ function startObjectMoving() {
     const intervalNumber = setInterval(() => {
         value ++;
         progress.value = value;
-        if (value === 50) {
+        if (value === 30) {
             clearInterval(intervalNumber);
         }
-    },1000);
+    }, 1000);
     startButton.style.display = "none";
     pointMovingInternal = setInterval(() => {
         if (direction === "right") {
@@ -63,6 +63,47 @@ function startObjectMoving() {
         }
     }, 1000);
     document.addEventListener("keydown", (event) => {
-        const 
-    })
-}
+        const reaction = document.getElementById('reaction')
+        if (event.key === "ArrowLeft") {
+            direction = "left";
+            if (direction === "right") {
+                resistance = 2;
+            } else {
+                resistance = 0.5;
+            }
+        }
+        const pointRight = currentPosition + point.offsetWidth;
+        const markLeft = mark.offsetLeft;
+        const markRight = mark.offsetLeft + mark.offsetWidth;
+        const distanceFromMark = Math.min(Math.abs(pointRight - markLeft), Math.abs(currentPosition - markRight));
+        const reactions = distanceFromMark / 10;
+        reactionValues.push(reactions.toFixed(2));
+        reaction.innerText = `Cкорость реакции на изменение движения шарика: ${reactionValues[reactionValues.length - 1]} с/шарик`;
+    });
+
+    function hitPercentageCalculator(progress) {
+        const deviation = Math.abs(currentPosition + point.offsetWidth / 2 - mark.offsetLeft - mark.offsetWidth / 2 + mark.offsetWidth / 2 - point.offsetWidth / 2);
+        const boxWidth = box.offsetWidth;
+        const deviationPercentage = ((boxWidth / 2 - deviation) / (boxWidth / 2)) * 100;
+        deviationValues.push(Math.abs(deviationPercentage.toFixed(2)));
+        testScore.innerText = `Процент отклонения от средней границы: ${deviationValues[deviationValues.length - 1]}%`;
+    }
+
+    setInterval(() => {
+        hitPercentageCalculator(progress);
+    }, 2000);
+
+    setTimeout(() => {
+        clearInterval(pointMovingInternal);
+        clearInterval(randomDirectionInterval);
+        startButton.style.display = "block";
+        const reactionAverage = reactionValues.reduce((acc, val) => acc + Number(val), 0) / reactionValues.length;
+        const deviationAverage = deviationValues.reduce((acc, val) => acc + Number(val), 0) / deviationValues.length;
+        reaction.innerText = ` Средняя скорость реакции на изменение движения шарика: ${reactionAverage.toFixed(2)} с/шарик`;
+        testScore.innerText = `Среднее отклонение от средней границы: ${deviationAverage.toFixed(2)}%`;
+        document.getElementById("avg_time").value = reactionAverage.toFixed(2);
+        document.getElementById("correct").value = deviationAverage.toFixed(2);
+        document.getElementById("score").value = deviationAverage.toFixed(2);
+        document.getElementById("submit-button").click();
+    }, 30000);}
+ startButton.addEventListener("click", startObjectMoving);
