@@ -5,13 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css"/>
-    <title>Реакция на свет (простая)</title>
-    <style>
-        .right-align {
-            float: right; 
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/style.css"/>
+    <title>Сложение в уме (текст)</title>
 </head>
 
 <body>
@@ -24,41 +19,44 @@
             <li><a href="list_expert2.html">Эксперты</a></li>
             <li><a href="../php/list_profess.php">Профессия</a></li>
             <li><a href="test2.html">Тестированиe</a></li>
-            <li class="right-align"><a href="../before login/test.html">Выйти</a> 
+            <li style="float: right"><a href="../test.html">Выйти</a> 
         </ul>
 
     </div>
     <div>sitplace</div>
     <div>sitplace</div>
-    <h1>Простая сенсомоторная реакция на визуальный сигнал</h1>
+    <h1>Сложная сенсомоторная реакция на второсигнальные (цифровые) сигналы</h1>
     <button class="instructions-button" onclick="openModalW()">Инструкция</button>
     <p>
     <div id="modal" class="modal">
         <div class="modal-content">
-            <span onclick="closeModalW()">&times</span>
+            <!-- <span onclick="closeModalW()">&times</span> -->
             <h2>Инструкция</h2>
             <p>
                 Для начала теста, нажмите кнопку "Начать". <br>
-                Квадраты начнут менять цвет. <br>
-                Вам надо как можно быстрее нажимать на пробел, когда вы увидите, что какой-то квадрат сменил цвет.
+                Вы увидете два числа. <br>
+                Ваша задача сложить их и определить, является ли результат четным или нечетным. Нажмите соответствующую кнопку, чтобы выбрать ответ.<br>
+                Вы можете повторить тест несколько раз, чтобы улучшить свой результат.
             </p>
         </div>
     </div>
-    <p>Нажимайте на пробел, когда квадрат сменит цвет!</p>
+    <p>Сложите числа и выберите результат!</p>
     <progress id="progress" value="0" max="100"></progress>
-    <div class="test" id="test">
-        <div class="field">
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-        </div>        <p>
-        <button class="btn start">Начать</button>
-        <p>
-        <div class="result">Здесь будет отображен результат</div>
-    </div>
+    <p>
+    <button class="start" onclick="testStart()">Начать</button>
+    <p>
+    <div id="question"></div>
+    <button class="odd" onclick="answerCheck('нечетное')">Нечетное</button>
+    <button class="even" onclick="answerCheck('четное')">Четное</button>
+    <p>
+    <div id="result"></div>
+    <p>
+    <div id="highAverage"></div>
+    <p>
+    <div id="lowAverage"></div>
 
     <form id="sendForm">
-        <input type="hidden" name="test_name" id="test_name" value="Свет_1">
+        <input type="hidden" name="test_name" id="test_name" value="Сложение (текст)">
         <input type="hidden" name="avg_time" id="avg_time">
         <input type="hidden" name="total_time" id="total_time">
         <input type="hidden" name="correct" id="correct">
@@ -68,8 +66,7 @@
     </form>
 
     <script src="../js/sendTestResult.js"></script>
-    <script src="../js/baseSquare.js"></script>
-    <script src="../js/lightSquare.js"></script>
+    <script src="../js/sumTest.js"></script>
     <script src="../js/modalWindowController.js"></script>
 </body>
 

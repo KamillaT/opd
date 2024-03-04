@@ -57,6 +57,7 @@ class SquareBase {
 
     attachTest(test) {
         this.startButton.onclick = () => {
+            this.setLabel("Тест начался!")
             this.startButton.style.display = "none"
             test()
         }

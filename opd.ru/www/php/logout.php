@@ -1,5 +1,5 @@
 <?php
 unset($_SESSION['username']);
-header("Location: ../registration.html");
+header("Location: ../login_reg/registration.html");
 die;
 ?>

@@ -5,13 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css"/>
-    <title>Реакция на звук</title>
-    <style>
-        .right-align {
-            float: right; 
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/style.css"/>
+    <title>Аналоговое слежение</title>
 </head>
 
 <body>
@@ -24,35 +19,37 @@
             <li><a href="list_expert2.html">Эксперты</a></li>
             <li><a href="../php/list_profess.php">Профессия</a></li>
             <li><a href="test2.html">Тестированиe</a></li>
-            <li class="right-align"><a href="../before login/test.html">Выйти</a> 
+            <li style="float: right"><a href="../test.html">Выйти</a> 
         </ul>
-
     </div>
     <div>sitplace</div>
     <div>sitplace</div>
-    <h1>Простая сенсомоторная реакция на слуховой сигнал</h1>
+    <h1>Аналоговое слежение</h1>
     <button class="instructions-button" onclick="openModalW()">Инструкция</button>
     <p>
     <div id="modal" class="modal">
         <div class="modal-content">
-            <span onclick="closeModalW()">&times</span>
             <h2>Инструкция</h2>
             <p>
-                Для начала теста, нажмите кнопку "Начать". <br>
-                Вы услышите звук, ваша задача как можно бысрее нажать на пробел
+                Нажмите кнопку "Начать".Красный шарик начнет двигаться по экрану влево и вправо. Ваша задача - при помощи кнопок "вправо" и "влево" удерживать шарик, как можно ближе к средней границе.
             </p>
         </div>
     </div>
-    <p>Нажимайте на пробел,когда вы услышите звук!</p>
-    <progress id="progress" value="0" max="100"></progress>
+    <p>Управляйте синим шариком с помощью клавиш "влево" и "вправо", не давая ему отлететь от средней границы.</p>
+    <progress id="progress" value="0" max="50"></progress>
     <p>
-    <button class="start" onclick="startTest()">Начать</button>
-    <div id="reactionTime"></div>
+    <div id="box">
+        <div id="point"></div>
+        <div id="mark"></div>
+    </div>
+
+    <div id="startButton">Начать</div>
     <p>
-    <div id="average"></div>
+    <div id="reaction"></div>
+    <div id="testScore"></div>
 
     <form id="sendForm">
-        <input type="hidden" name="test_name" id="test_name" value="Звук">
+        <input type="hidden" name="test_name" id="test_name" value="Свет">
         <input type="hidden" name="avg_time" id="avg_time">
         <input type="hidden" name="total_time" id="total_time">
         <input type="hidden" name="correct" id="correct">
@@ -62,8 +59,8 @@
     </form>
 
     <script src="../js/sendTestResult.js"></script>
-    <script src="../js/soundTest.js"></script>
+    <script src="../js/analogTrackTest.js"></script>
     <script src="../js/modalWindowController.js"></script>
 </body>
-
+</body>
 </html>

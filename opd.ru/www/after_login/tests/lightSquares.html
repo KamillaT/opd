@@ -5,13 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css"/>
-    <title>Аналоговое слежение</title>
-    <style>
-        .right-align {
-            float: right; 
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/style.css"/>
+    <title>Реакция на свет (простая)</title>
 </head>
 
 <body>
@@ -24,34 +19,38 @@
             <li><a href="list_expert2.html">Эксперты</a></li>
             <li><a href="../php/list_profess.php">Профессия</a></li>
             <li><a href="test2.html">Тестированиe</a></li>
-            <li class="right-align"><a href="../before login/test.html">Выйти</a> 
+            <li style="float: right"><a href="../test.html">Выйти</a> 
         </ul>
+
     </div>
     <div>sitplace</div>
     <div>sitplace</div>
-    <h1>Аналоговое слежение</h1>
+    <h1>Простая сенсомоторная реакция на визуальный сигнал</h1>
     <button class="instructions-button" onclick="openModalW()">Инструкция</button>
     <p>
     <div id="modal" class="modal">
         <div class="modal-content">
+            <span onclick="closeModalW()">&times</span>
             <h2>Инструкция</h2>
             <p>
-                Нажмите кнопку "Начать".Красный шарик начнет двигаться по экрану влево и вправо. Ваша задача - при помощи кнопок "вправо" и "влево" удерживать шарик, как можно ближе к средней границе.
+                Для начала теста, нажмите кнопку "Начать". <br>
+                Квадраты начнут менять цвет. <br>
+                Вам надо как можно быстрее нажимать на пробел, когда вы увидите, что какой-то квадрат сменил цвет.
             </p>
         </div>
     </div>
-    <p>Управляйте синим шариком с помощью клавиш "влево" и "вправо", не давая ему отлететь от средней границы.</p>
-    <progress id="progress" value="0" max="50"></progress>
-    <p>
-    <div id="box">
-        <div id="point"></div>
-        <div id="mark"></div>
+    <p>Нажимайте на пробел, когда квадрат сменит цвет!</p>
+    <progress id="progress" value="0" max="100"></progress>
+    <div class="test" id="test">
+        <div class="field">
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+        </div>        <p>
+        <button class="btn start">Начать</button>
+        <p>
+        <div class="result">Здесь будет отображен результат</div>
     </div>
-
-    <div id="startButton">Начать</div>
-    <p>
-    <div id="reaction"></div>
-    <div id="testScore"></div>
 
     <form id="sendForm">
         <input type="hidden" name="test_name" id="test_name" value="Свет">
@@ -64,8 +63,9 @@
     </form>
 
     <script src="../js/sendTestResult.js"></script>
-    <script src="../js/analogTrackTest.js"></script>
+    <script src="../js/baseSquare.js"></script>
+    <script src="../js/lightSquare.js"></script>
     <script src="../js/modalWindowController.js"></script>
 </body>
-</body>
+
 </html>

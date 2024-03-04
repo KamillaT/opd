@@ -4,25 +4,161 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тестированиe</title>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="./css/style.css"/>
+    <style>
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; 
+        }
+        .test-box {
+            width: calc(26.666% - 7px);
+            height: 150px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .test-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .test-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .test-button {
+            background-color: rgb(248, 129, 208);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            outline: none;
+            border-radius: 40px;
+        }
+    </style>
 </head>
 <body>
     <div class="headerpage"></div>
     <div>
         <ul>
-            <li><a href="index.html">Main.page</a></li>
+            <li><a href="index.html">Главная</a></li>
             <li><a href="list_expert.html">Эксперты</a></li>
-            <li><a href="list_profess.php">Профессия</a>
+            <li><a href="profession.php">Профессия</a></li>
+            <li><a href="test.html">Тестированиe</a></li>
+            <li style="float: right"><a href="./login_reg/registration.html">Войти</a> 
         </ul>
     </div>
     <div class="sitplace"></div>
-    <h1>test111</h1>
-	<hr/>
-    <div class="button_menu">
-        <a href="registration.html" class="b1">Sign up</a>
-        <a href="index.html" class="b1">Main</a>
-    </div>
-    <hr/>
+    <h1>Тесты</h1>
+    <main> 
+        <div class="test-box">
+            <div class="test-title">Реакция на звук</div>
+            <div class="test-icon">🔊</div>
+            <button class="instructions-button" onclick="openModalW()">Пройти</button>
+            <p>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModalW()">&times</span>
+                    <p>
+                        Вы должны войти, чтобы иметь возможность пройти этот тест!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="test-box">
+            <div class="test-title">Реакция на свет (простая)</div>
+            <div class="test-icon">🎆</div>
+            <button class="instructions-button" onclick="openModalW()">Пройти</button>
+            <p>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModalW()">&times</span>
+                    <p>
+                        Вы должны войти, чтобы иметь возможность пройти этот тест!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="test-box">
+            <div class="test-title">Реакция на свет (сложная)</div>
+            <div class="test-icon">🎆</div>
+            <button class="instructions-button" onclick="openModalW()">Пройти</button>
+            <p>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModalW()">&times</span>
+                    <p>
+                        Вы должны войти, чтобы иметь возможность пройти этот тест!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="test-box">
+            <div class="test-title">Реакция на цифровые сигналы</div>
+            <div class="test-icon">🧮</div>
+            <button class="instructions-button" onclick="openModalW()">Пройти</button>
+            <p>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModalW()">&times</span>
+                    <p>
+                        Вы должны войти, чтобы иметь возможность пройти этот тест!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="test-box">
+            <div class="test-title">РДО (простая)</div>
+            <div class="test-icon">🤾‍♀️</div>
+            <button class="instructions-button" onclick="openModalW()">Пройти</button>
+            <p>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModalW()">&times</span>
+                    <p>
+                        Вы должны войти, чтобы иметь возможность пройти этот тест!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="test-box">
+            <div class="test-title">РДО (сложная)</div>
+            <div class="test-icon">🤾‍♀️</div>
+            <button class="instructions-button" onclick="openModalW()">Пройти</button>
+            <p>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModalW()">&times</span>
+                    <p>
+                        Вы должны войти, чтобы иметь возможность пройти этот тест!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="test-box">
+            <div class="test-title">Аналоговое слежение</div>
+            <div class="test-icon">🕵️</div>
+            <button class="instructions-button" onclick="openModalW()">Пройти</button>
+            <p>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModalW()">&times</span>
+                    <p>
+                        Вы должны войти, чтобы иметь возможность пройти этот тест!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../js/modalWindowController.js"></script>
 </body>
 </html>
-

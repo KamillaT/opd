@@ -21,10 +21,10 @@
 	if($result->num_rows == 0) {
 		$sql = "INSERT INTO $table_name (username, pswd, state) VALUES ('$username', '$password', 'User')";
 		$conn->query($sql);
-		header('Location: ../reg_success.html');
+		header('Location: ../login_reg/reg_success.html');
 	}
 	else {
-		header('Location: ../reg_unsuccess.html');
+		header('Location: ../login_reg/reg_unsuccess.html');
 	}
 	$conn->close();
 ?>

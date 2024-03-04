@@ -67,7 +67,7 @@
             <li><a href="list_expert.html">Эксперты</a></li>
             <li><a href="profession.php">Профессия</a></li>
             <li><a href="test.html">Тестированиe</a></li>
-            <li style="float: right"><a href="./login_reg/registration.html">Войти</a>
+            <li style="float: right"><a href="../profession.php">Выйти</a>
         </ul>
     </div> 
     <div class="sitplace"></div> 

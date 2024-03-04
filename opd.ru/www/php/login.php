@@ -26,14 +26,14 @@
 		$rows = mysqli_num_rows($result);
 		if ($rows == 1) {
 			$_SESSION['username'] = $username;
-			header("Location: ./for_auth_users/login_success.php");
+			header("Location: login_success.php");
 		}
 		else {
-			header("Location: ../login_unsuccess.html");
+			header("Location: ../login_reg/login_unsuccess.html");
 		}
 	}
 	else {
-		header("Location: ../unexpected_error.html");
+		header("Location: ../login_reg/unexpected_error.html");
 	}
 	$conn->close();
 ?>
