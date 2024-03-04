@@ -1,5 +1,6 @@
 <?php
     include("../php/auth_session.php");
+    include("../php/experts_marks.php");
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ru">
@@ -24,24 +25,8 @@
 <h1>Привет, <?php echo $_SESSION['username'];?>!</h1>
 <hr/>
 <div>
-    <a href="test_results.php">Результаты тестирований</a>
-    <?php
-        $conn = new mysqli("localhost", "root", "", "users");
-        $username = $_SESSION['username'];
-        $result = $conn->query("SELECT * FROM user_data WHERE username = '$username'");
-        $row = $result->fetch_array(MYSQLI_ASSOC);
-        $state = $row['state'];
-        if ($state == 'Admin') {
-            echo '<a href="change_user_state.php">Редактировать статусы</a>';
-        }
-        else if ($state == 'Expert') {
-            echo '<a href="change_mark.php">Редактировать оценку</a>';
-        }
-        else if ($state == 'Admin/Expert') {
-            echo '<a href="change_user_state.php">Редактировать статусы</a>';
-            echo '<a href="change_mark.php">Редактировать оценку</a>';
-        }
-    ?>
+    <h2>Редактировать оценку</h2>
+
 </div>
 </body>
 </html>

@@ -42,6 +42,7 @@
                 <select name="state">
                 <option value="Admin">Admin</option>
                 <option value="Expert">Expert</option>
+                <option value="Admin/Expert">Admin/Expert</option>
                 <option value="User">User</option>
                 </select>
                 <input type="submit" value="submit" name="submit">
