@@ -14,7 +14,8 @@
             <ul>
                 <li><a href="index.php">Main.page</a></li>
                 <li><a href="list_expert.php">Эксперты</a></li>
-                <li><a href="list_profess.php">Профессия</a>
+                <li><a href="list_profess.php">Профессия</a></li>
+                <li><a href="../../after login/test2.html">Тестирование</a></li>
                 <li style="float: right;"><a href="personal_account.php">Личный кабинет</a></li>
             </ul>
         </div>

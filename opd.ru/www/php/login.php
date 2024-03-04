@@ -26,7 +26,7 @@
 		$rows = mysqli_num_rows($result);
 		if ($rows == 1) {
 			$_SESSION['username'] = $username;
-			header("Location: ./login_success.php");
+			header("Location: ./for_auth_users/login_success.php");
 		}
 		else {
 			header("Location: ../login_unsuccess.html");

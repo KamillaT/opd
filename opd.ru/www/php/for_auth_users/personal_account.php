@@ -28,7 +28,7 @@
 </div>
 <hr/>
 <div>
-    <a href="#">Результаты тестирований</a>
+    <a href="test_results.php">Результаты тестирований</a>
     <?php
         $conn = new mysqli("localhost", "root", "", "users");
         $username = $_SESSION['username'];
@@ -36,7 +36,7 @@
         $row = $result->fetch_array(MYSQLI_ASSOC);
         $state = $row['state'];
         if ($state == 'Admin') {
-            echo '<a href="#">Редактировать статусы</a>';
+            echo '<a href="change_user_state.php">Редактировать статусы</a>';
         }
     ?>
 </div>
