@@ -31,12 +31,14 @@
     <?php
         $conn = new mysqli("localhost", "root", "", "users");
         $result = $conn->query("SELECT * FROM user_data");
-        while ($r = $result->fetch_array(MYSQLI_ASSOC)) {
-            $username = $r['username'];
+        
             echo '<form method="POST">
-                <select name="username">
-                <option value="'.$username.'">'.$username.'</option>
-                </select>
+                <select name="username">';
+                while ($r = $result->fetch_array(MYSQLI_ASSOC)) {
+            	$username = $r['username'];
+                echo '<option value="'.$username.'">'.$username.'</option>';
+                }
+                echo '</select>
                 <select name="state">
                 <option value="Admin">Admin</option>
                 <option value="Expert">Expert</option>
@@ -44,12 +46,11 @@
                 </select>
                 <input type="submit" value="submit" name="submit">
                 </form>';
-        }
         if(isset($_POST['submit'])) {
             $username = $_POST['username'];
             $state = $_POST['state'];
             $conn->query("UPDATE user_data SET state = '$state' WHERE username = '$username'");
-        }     
+        }   
     ?>
 </div>
 </body>
