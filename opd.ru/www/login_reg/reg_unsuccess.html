@@ -4,71 +4,93 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Registration page</title>
 <link rel="stylesheet" href="../css/style.css" />
+    <style>
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .toggle-btn {
+            margin: 0 10px; /* Điều chỉnh khoảng cách giữa các nút */
+        }
+        .right-align {
+            float: right; 
+        }
+    </style>
 </head>
 <body>
-	<div class="headerpage"></div>
+    <div class="headerpage"></div>
     <div>
         <ul>
             <li><a href="../index.html">Главная</a></li>
             <li><a href="../list_expert.html">Эксперты</a></li>
-            <li><a href="../php/list_profess.php">Профессия</a></li>
+            <li><a href="../profession.php">Профессия</a></li>
             <li><a href="../test.html">Тестированиe</a></li>
-            <li style="float: right"><a href="registration.html">Войти</a> 
+            <li class="right-align"><a href="registration.html">Войти</a> 
         </ul>
     </div>
-    <div class="sitplace"></div>
-<h1>Registration</h1>
-	<hr/>
-<body class="reg_form_body">
-	<div>
-	<h2>Такой пользователь существует! Выберите другое имя</h2>
-	</div>
-	<div class="container">
-			<div class="tabs">
-				<div id="btn"></div>
-				<button type="button" class="toggle-btn" onclick="login()">Log In</button>
-				<button type="button" class="toggle-btn" onclick="registration()">Register</button>
-			</div>
-			<div class="social-icons">
-				<h2>Welcome!</h2>
-			</div>
-		
-			<form id="login" class="form" action="../php/login.php">
-				<input type="text" class="input-filed" placeholder="Имя пользователя">
-				<input type="text" class="input-filed" placeholder="Пароль">
-				<input type="checkbox" class="check-box"><span>Remember Password</span>
-				<button type="submit" class="submit-btn">Log in</button>
-			</form>
-		
-			<form id="register" class="form" action="../php/add_users.php">
-				<input type="text" class="input-filed" name="username" placeholder="Имя пользователя">
-				<!-- <input type="email" class="input-filed" placeholder="Email Id"> -->
-				<input type="text" class="input-filed" name="password" placeholder="Пароль">
-				<input type="checkbox" class="check-box"><span>I agree to the terms & conditions</span>
-				<button type="submit" class="submit-btn" onclick="javascript: submitform();">Register</button>
-			</form>
-			</div>
-			<script>
-				var logIn = document.getElementById("login");
-				var register = document.getElementById("register");
-				var button = document.getElementById("btn");
-			
-				function registration() {
-				  logIn.style.left = "-400px";
-				  register.style.left = "50px";
-				  button.style.left = "110px";
-				}
-			
-				function login() {
-				  logIn.style.left = "50px";
-				  register.style.left = "450px";
-				  button.style.left = "0";
-				}
-				function submitform()
-				{
-				  document.register.submit();
-				}
-			</script>
-	</body>
+    <!-- <div class="reg_block">
+        <div class="block" id="content">Регистрация на тест 
+            <form action="add_users.php" method="post"> 
+                <label for="E-mail" name="email">E-mail: </label> 
+                <input type="text" placeholder="электронная почта"><br> 
+                <label for="Password" name="password">Пароль: </label> 
+                <input type="text" placeholder="пароль">
+                <div>
+                    <button class="reg_but">Зарегистрироваться</button>
+                </div>
+            </form>
+        </div>
+    </div> -->
+    <body class="reg_form_body">
+        <div class="sitplace"></div>
+        <div class="container">
+            <div class="tabs">
+                <div id="btn"></div>
+                <div class="buttons-container">
+                    <button type="button" class="toggle-btn" onclick="login()">Вход</button>
+                    <button type="button" class="toggle-btn" onclick="registration()">Регистрация</button>
+                </div>
+            </div>
+            <div class="social-icons" style="text-align: center;">
+    		<h3>Выберите другое имя пользователя, такое уже существует</h3>
+            </div>
+        
+            <form id="login" class="form" method="post" action="../php/login.php">
+                <input type="text" class="input-filed" name="username" placeholder="Имя пользователя">
+                <input type="text" class="input-filed" name="password" placeholder="Пароль">
+                <input type="checkbox" class="check-box"><span>Запомнить пароль</span>
+                <button type="submit" class="submit-btn" onclick="javascript: submitform();">Войти</button>
+            </form>
+        
+            <form id="register" class="form" method="post" action="../php/add_users.php">
+                <input type="text" class="input-filed" name="username" placeholder="Имя пользователя">
+                <input type="text" class="input-filed" name="password" placeholder="Пароль">
+                <input type="checkbox" class="check-box"><span>Я согласен с правилами и условиями</span>
+                <button type="submit" class="submit-btn" onclick="javascript: submitform();">Зарегистрироваться</button>
+            </form>
+        </div>
+        <script>
+            var logIn = document.getElementById("login");
+            var register = document.getElementById("register");
+            var button = document.getElementById("btn");
+        
+            function registration() {
+            logIn.style.left = "-400px";
+            register.style.left = "50px";
+            button.style.left = "110px";
+            }
+        
+            function login() {
+            logIn.style.left = "50px";
+            register.style.left = "450px";
+            button.style.left = "0";
+            }
+            function submitform()
+            {
+            document.register.submit();
+            }
+        </script>
+    </body>
 </body>
 </html>
