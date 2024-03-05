@@ -11,8 +11,32 @@
 	$conn->query($query_table);
 	$result = $conn->query("SELECT * FROM $table_name WHERE username = 'kami'");
 	if($result->num_rows == 0) {
-		$sql = "INSERT INTO $table_name (username, pswd, state) VALUES ('kami', 'kami', 'Admin')";
+		$sql = "INSERT INTO $table_name (username, pswd, state) VALUES ('kami', 'kami', 'Admin/Expert')";
 		$conn->query($sql);
+	}
+	else {
+		$sql = "UPDATE $table_name SET state = 'Admin/Expert' WHERE username = '$username'";
+		$conn->query($sql);	
+	}
+	
+	$result = $conn->query("SELECT * FROM $table_name WHERE username = 'ruohan'");
+	if($result->num_rows == 0) {
+		$sql = "INSERT INTO $table_name (username, pswd, state) VALUES ('ruohan', 'ruohan', 'Admin/Expert')";
+		$conn->query($sql);
+	}
+	else {
+		$sql = "UPDATE $table_name SET state = 'Admin/Expert' WHERE username = 'ruohan'";
+		$conn->query($sql);	
+	}
+	
+	$result = $conn->query("SELECT * FROM $table_name WHERE username = 'tuan'");
+	if($result->num_rows == 0) {
+		$sql = "INSERT INTO $table_name (username, pswd, state) VALUES ('tuan', 'tuan', 'Admin/Expert')";
+		$conn->query($sql);
+	}
+	else {
+		$sql = "UPDATE $table_name SET state = 'Admin/Expert' WHERE username = 'tuan'";
+		$conn->query($sql);	
 	}
 
 	$username = $_REQUEST['username'];
