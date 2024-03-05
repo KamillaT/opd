@@ -2,7 +2,7 @@ const delay = 1000;
 const max_attempt = 10;
 let timeId;
 let attempt = 0;
-let totalReationTime = 0;
+let totalReactionTime = 0;
 let averageReactionTime;
 let averagePercent;
 
@@ -10,7 +10,7 @@ function startTest() {
     document.querySelector(".start").style.display = "none";
     if (attempt === max_attempt) {
         attempt = 0;
-        totalReationTimes = 0;
+        totalReactionTime = 0;
         averageReactionTime = 0;
         average.innerText = "";
     }
@@ -23,14 +23,14 @@ function startTest() {
 }
 
 function playSound() {
-    const audio = new Audio("../audio/sound1.mp3");
+    const audio = new Audio("../../audio/sound1.mp3");
     audio.play();
     const startTime = Date.now();
     const listener = function () {
         const reactionTime = Date.now() - startTime;
         document.getElementById("reactionTime").innerHTML = `Ваше время реакции: ${reactionTime} миллисекунд`;
-        totalReationTime += reactionTime;
-        averageReactionTime = totalReationTime/attempt;
+        totalReactionTime += reactionTime;
+        averageReactionTime = totalReactionTime/attempt;
         document.removeEventListener('keydown',listener);
     }
     document.addEventListener('keydown', listener);
