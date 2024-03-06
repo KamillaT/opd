@@ -5,22 +5,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/style.css"/>
-    <title>Сложение в уме (текст)</title>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <title>Сложная сенсомоторная реакция на слуховой сигнал</title>
+    <style>
+        .right-align {
+            float: right; 
+        }
+    </style>
 </head>
 
 <body>
     <div class="headerpage">
-        <button class="back-button" onclick="location.href='../test.html'">Назад</button>
+        <button class="back-button" onclick="location.href='test2.html'">Назад</button>
     </div>
     <div>
         <ul>
-            <li><a href="../index.html">Главная</a></li>
-            <li><a href="../list_expert.html">Эксперты</a></li>
-            <li><a href="../test.html">Тестированиe</a></li>
-            <li><a href="../personal_account.php">Личный кабинет</a></li>
-            <li style="float: right"><a href="../../test.html">Выйти</a> 
+            <li><a href="index2.html">Главная</a></li>
+            <li><a href="list_expert2.html">Эксперты</a></li>
+            <li><a href="../php/list_profess.php">Профессия</a></li>
+            <li><a href="test2.html">Тестированиe</a></li>
+            <li class="right-align"><a href="../before login/test.html">Выйти</a> 
         </ul>
+
     </div>
     <div>sitplace</div>
     <div>sitplace</div>
@@ -33,8 +39,8 @@
             <h2>Инструкция</h2>
             <p>
                 Для начала теста, нажмите кнопку "Начать". <br>
-                Вы увидете два числа. <br>
-                Ваша задача сложить их и определить, является ли результат четным или нечетным. Нажмите соответствующую кнопку, чтобы выбрать ответ.<br>
+                Вы услышите два числа, ваша задача сложить их и определить, является
+                ли результат четным или нечетным. Нажмите соответствующую кнопку, чтобы выбрать ответ.<br>
                 Вы можете повторить тест несколько раз, чтобы улучшить свой результат.
             </p>
         </div>
@@ -50,9 +56,8 @@
     <p>
     <div id="result"></div>
     <p>
-    <div id="highAverage"></div>
-    <p>
-    <div id="lowAverage"></div>
+    <div id="average"></div>
+    <div id="sound"></div>
 
     <form id="sendForm">
         <input type="hidden" name="test_name" id="test_name" value="Сложение (текст)">
@@ -64,9 +69,9 @@
         <input id="submit-button" type="submit" value="Submit" style="display: none;">
     </form>
 
-    <script src="../../js/sendTestResult.js"></script>
-    <script src="../../js/sumTest.js"></script>
-    <script src="../../js/modalWindowController.js"></script>
+    <script src="../js/sendTestResult.js"></script>
+    <script src="../js/sumSoundTest.js"></script>
+    <script src="../js/modalWindowController.js"></script>
 </body>
 
 </html>

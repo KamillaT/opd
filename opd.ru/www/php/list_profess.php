@@ -12,7 +12,6 @@
         <ul>
             <li><a href="index.html">Main.page</a></li>
             <li><a href="list_expert.html">Эксперты</a></li>
-            <li><a href="list_profess.php">Профессия</a>
         </ul>
     </div>
     <div class="sitplace"></div>

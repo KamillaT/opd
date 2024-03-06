@@ -13,9 +13,8 @@
         <ul>
             <li><a href="../after_login/index.html">Главная</a></li>
             <li><a href="../after_login/list_expert.html">Эксперты</a></li>
-            <li><a href="../after_login/profession.php">Профессия</a></li>
             <li><a href="../after_login/test.html">Тестированиe</a></li>
-            <li style="float: right;"><a href="../after_login/personal_account.php">Личный кабинет</a></li>
+            <li><a href="../after_login/personal_account.php">Личный кабинет</a></li>
             <li style="float: right"><a href="../index.html">Выйти</a> 
         </ul>
     </div>

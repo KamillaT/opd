@@ -52,7 +52,6 @@
         <ul>
             <li><a href="index.html">Главная</a></li>
             <li><a href="list_expert.html">Эксперты</a></li>
-            <li><a href="profession.php">Профессия</a></li>
             <li><a href="test.html">Тестированиe</a></li>
             <li style="float: right"><a href="./login_reg/registration.html">Войти</a> 
         </ul>
@@ -63,6 +62,20 @@
         <div class="test-box">
             <div class="test-title">Реакция на звук</div>
             <div class="test-icon">🔊</div>
+            <button class="instructions-button" onclick="openModalW()">Пройти</button>
+            <p>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModalW()">&times</span>
+                    <p>
+                        Вы должны войти, чтобы иметь возможность пройти этот тест!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="test-box">
+            <div class="test-title">Реакция на свет (сложная)</div>
+            <div class="test-icon">🎆</div>
             <button class="instructions-button" onclick="openModalW()">Пройти</button>
             <p>
             <div id="modal" class="modal">
