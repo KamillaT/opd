@@ -5,84 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Профессия</title> 
     <link rel="stylesheet" href="../css/style.css"> 
-    <style> 
-    .container2{ 
-        position: relative; 
-        display: flex; 
-        justify-content: center; 
-        align-items: center; 
-        flex-wrap: wrap; 
-        gap: 100px 50px; 
-        padding: 100px 50px; 
-    } 
- 
-    .container2 .card{ 
-        position: relative; 
-        display: flex; 
-        justify-content: center; 
-        align-items: flex-start; 
-        width: 350px; 
-        height: 300px; 
-        background: #fff; 
-        border-radius: 20px; 
-        box-shadow: 0 35px 80px rgba(176, 175, 74, 0.3);
-        transition: all 0.5s ease;  
-    } 
- 
-    .container2 .card:hover{ 
-        height: 800px; 
-    } 
- 
-    .container2 .card .imgBx{ 
-        position: absolute; 
-        top: 20px; 
-        width: 300px; 
-        height: 200px; 
-        background: #333; 
-        border-radius: 12px; 
-        transition: all 0.5s ease; 
-    } 
- 
-    .container2 .card:hover .imgBx{ 
-        top: -100px; 
-        scale: 0.75; 
-        box-shadow: 0 15px 45px rgba(0,0,0,0.3); 
-    } 
- 
-    .container2 .card .imgBx img{ 
-        position: absolute; 
-        top: 0; 
-        left: 0; 
-        width: 100%; 
-        height: 100%; 
-        object-fit: cover; 
-        border-radius: 10px; 
-    }
-
-    .container2 .card .content{
-        position: absolute;
-        top: 207px;
-        width: 90%;
-        padding: 0 30px;
-        height: 90px;
-        overflow: hidden;
-        text-align: center;
-        transition: 0.5s; 
-    }
-
-    .container2 .card:hover .content{ 
-        top: 100px; 
-        height: 800px;
-        width: 90%;
-        transition: 0.5s;
-    }
-
-    .container2 .card .content h2{
-        font-size: 1.5em;
-        font-weight: 700;
-        color: var(--clr); 
-    }
-    </style> 
+    <link rel="stylesheet" href="../css/profess.css">
 </head> 
 <body>
     <?php
@@ -246,6 +169,38 @@
                     }
                 ?>
             </div> 
+        </div>
+    </div>
+    <div class="container3">
+        <div class="card" style="--d:1;">
+            <div class="content">
+                <div class="h2">
+                    <h2>Память</h2>
+                </div>
+                <div class="text">
+                    <p>Способность мозга, с помощью которой данные или информация кодируются, хранятся и извлекаются при необходимости.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="--d:2;">
+            <div class="content">
+                <div class="h2">
+                    <h2>Память</h2>
+                </div>
+                <div class="text">
+                    <p>Способность мозга, с помощью которой данные или информация кодируются, хранятся и извлекаются при необходимости.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="--d:3;">
+            <div class="content">
+                <div class="h2">
+                    <h2>Память</h2>
+                </div>
+                <div class="text">
+                    <p>Способность мозга, с помощью которой данные или информация кодируются, хранятся и извлекаются при необходимости.</p>
+                </div>
+            </div>
         </div>
     </div>
 </body> 
