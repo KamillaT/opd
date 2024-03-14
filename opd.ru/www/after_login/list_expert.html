@@ -1,7 +1,71 @@
-﻿<!DOCTYPE html>
+﻿<?php
+	$conn = new mysqli("localhost", "root", "");
+	
+	$table_name = "experts_marks";
+	$query_table = "CREATE TABLE IF NOT EXISTS users.$table_name (id INT PRIMARY KEY AUTO_INCREMENT, 
+		expert_id INT NOT NULL,
+		job_id INT NOT NULL, 
+		memory INT NOT NULL, 
+		effciency INT NOT NULL, 
+		oral_skills INT NOT NULL, 
+		prof_vocab INT NOT NULL, 
+		creativity INT NOT NULL, 
+		logic INT NOT NULL, 
+		communication INT NOT NULL, 
+		time_manag INT NOT NULL,
+		FOREIGN KEY (expert_id) REFERENCES users.user_data (id),
+		FOREIGN KEY (job_id) REFERENCES pvk.jobs (id))";
+	$conn->query($query_table);
+	
+	$result = $conn->query("SELECT id FROM users.user_data WHERE username = 'kami'")->fetch_array(MYSQLI_ASSOC);
+	$id = $result['id'];
+	$res = $conn->query("SELECT * FROM users.$table_name WHERE expert_id=$id");
+	if ($res->num_rows==0) {
+		$conn->query("INSERT INTO users.$table_name(expert_id, job_id, memory, effciency, oral_skills, prof_vocab, creativity, logic, communication, time_manag)
+				VALUES ($id, 1, 75, 75, 60, 65, 40, 75, 75, 90)");
+				
+		$conn->query("INSERT INTO users.$table_name(expert_id, job_id, memory, effciency, oral_skills, prof_vocab, creativity, logic, communication, time_manag)
+				VALUES ($id, 2, 60, 65, 50, 65, 70, 75, 55, 55)");
+				
+		$conn->query("INSERT INTO users.$table_name(expert_id, job_id, memory, effciency, oral_skills, prof_vocab, creativity, logic, communication, time_manag)
+				VALUES ($id, 3, 65, 65, 60, 65, 80, 30, 85, 55)");
+	}
+	
+	$result = $conn->query("SELECT id FROM users.user_data WHERE username = 'ruohan'")->fetch_array(MYSQLI_ASSOC);
+	$id = $result['id'];
+	$res = $conn->query("SELECT * FROM users.$table_name WHERE expert_id=$id");
+	if ($res->num_rows==0) {
+		$conn->query("INSERT INTO users.$table_name(expert_id, job_id, memory, effciency, oral_skills, prof_vocab, creativity, logic, communication, time_manag)
+				VALUES ($id, 1, 70, 80, 55, 60, 45, 70, 75, 85)");
+				
+		$conn->query("INSERT INTO users.$table_name(expert_id, job_id, memory, effciency, oral_skills, prof_vocab, creativity, logic, communication, time_manag)
+				VALUES ($id, 2, 65, 60, 45, 60, 65, 70, 50, 60)");
+				
+		$conn->query("INSERT INTO users.$table_name(expert_id, job_id, memory, effciency, oral_skills, prof_vocab, creativity, logic, communication, time_manag)
+				VALUES ($id, 3, 60, 60, 65, 65, 75, 35, 80, 45)");
+	}
+	
+	$result = $conn->query("SELECT id FROM users.user_data WHERE username = 'tuan'")->fetch_array(MYSQLI_ASSOC);
+	$id = $result['id'];
+	$res = $conn->query("SELECT * FROM users.$table_name WHERE expert_id=$id");
+	if ($res->num_rows==0) {
+		$conn->query("INSERT INTO users.$table_name(expert_id, job_id, memory, effciency, oral_skills, prof_vocab, creativity, logic, communication, time_manag)
+				VALUES ($id, 1, 75, 75, 60, 65, 40, 80, 75, 95)");
+				
+		$conn->query("INSERT INTO users.$table_name(expert_id, job_id, memory, effciency, oral_skills, prof_vocab, creativity, logic, communication, time_manag)
+				VALUES ($id, 2, 70, 65, 45, 65, 70, 75, 55, 50)");
+				
+		$conn->query("INSERT INTO users.$table_name(expert_id, job_id, memory, effciency, oral_skills, prof_vocab, creativity, logic, communication, time_manag)
+				VALUES ($id, 3, 65, 70, 60, 65, 80, 30, 85, 50)");
+	}
+	$result = $conn->query("SELECT * FROM users.experts_marks");
+	$data = $result->fetch_all(MYSQLI_ASSOC);
+
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html/php; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Эксперты</title>
     <link rel="stylesheet" href="../css/style.css">
@@ -18,18 +82,19 @@
     </style>
 </head>
 <body>
+    <div class="headerpage"></div>
     <div>
-        <ul>
-            <li><a href="index.html">Главная</a></li>
+        <ul> 
+            <li><a href="index.html">Главная</a></li> 
             <li><a href="list_expert.html">Эксперты</a></li>
             <li><a href="test.html">Тестированиe</a></li>
             <li><a href="personal_account.php">Личный кабинет</a></li>
-            <li style="float: right"><a href="../list_expert.html">Выйти</a> 
+            <li style="float: right"><a href="../php/logout.php">Выйти</a> 
         </ul>
     </div>
     <div class="sitplace"></div>
     <div class="listTema">
-        <h1>Список Экспертов</h1>
+        <h1>Список Эксперты</h1>
     </div>
     <hr/>
     <!-- <button>Редоктировать</button>
@@ -37,11 +102,38 @@
     <form action="">
         <table>
             <tr style="height: 40px;">
-                <th>ФИО</th>
-                <th>Роль</th>
-                <th>Телефон</th>
-                <th>Операция</th>
-            </tr>
+                <th>Имя</th>
+                <th>Профессия</th>
+                <th>Память</th>
+                <th>Эффективность</th>
+                <th>Навыки устного выражения</th>
+                <th>Профессиональный словарный запас</th>
+                <th>Креативность</th>
+                <th>Способность к логическому рассуждению</th>
+                <th>Коммуникабельность</th>
+                <th>Тайм-менеджмент</th>
+               </tr>
+                
+                <?php foreach($data as $row): ?>
+                <tr style="height: 40px;">
+                <?php
+                	$expert_id = $row['expert_id'];
+			$name = $conn->query("SELECT username FROM users.user_data WHERE id=$expert_id")->fetch_array(MYSQLI_ASSOC)['username'];
+			$job_id = $row['job_id'];
+			$job = $conn->query("SELECT name FROM pvk.jobs WHERE id=$job_id")->fetch_array(MYSQLI_ASSOC)['name'];
+                ?>
+                <td><?= htmlspecialchars($name) ?></td>
+                <td><?= htmlspecialchars($job) ?></td>
+                <td><?= htmlspecialchars($row['memory']) ?></td>
+                <td><?= htmlspecialchars($row['effciency']) ?></td>
+                <td><?= htmlspecialchars($row['oral_skills']) ?></td>
+                <td><?= htmlspecialchars($row['prof_vocab']) ?></td>
+                <td><?= htmlspecialchars($row['creativity']) ?></td>
+                <td><?= htmlspecialchars($row['logic']) ?></td>
+                <td><?= htmlspecialchars($row['communication']) ?></td>
+                <td><?= htmlspecialchars($row['time_manag']) ?></td>
+                </tr>
+                <?php endforeach ?>
         </table>
     </form>
 </body>
