@@ -37,7 +37,7 @@
             echo '<a href="change_mark.php">Редактировать оценку</a>';
         }
         else if ($state == 'Admin/Expert') {
-            echo '<a href="change_user_state.php">Редактировать статусы</a>';
+            echo '<a href="change_user_state.html">Редактировать статусы</a>';
             echo '<a href="change_mark.php">Редактировать оценку</a>';
         }
     ?>
