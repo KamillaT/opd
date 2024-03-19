@@ -2,6 +2,7 @@
 <html lang="ru">
 <?php
 include("../php/auth_session.php");
+include("../php/experts_marks.php");
 ?>
 <head>
     <meta http-equiv="Content-Type" content="text/html/php; charset=utf-8">
@@ -36,28 +37,22 @@ include("../php/auth_session.php");
 <h1>Привет, <?php echo $_SESSION['username'];?>!</h1>
 <hr/>
 <div>
-    <h2>Редактировать статусы</h2>
+    <h2>Редактировать оценки</h2>
   
 <table>
     <tr style="height: 40px;">
-    <th>Имя пользователя</th>
-    <th>Статус</th>
+    <th>Профессия</th>
+    <th>Память</th>
     <th>Выберите новый статус</th>
     </tr>
 <?php
     $conn = new mysqli("localhost", "root", "", "users");
-    $result = $conn->query("SELECT * FROM user_data");
+    $username = $_SESSION['username'];
+    $result = $conn->query("SELECT * FROM experts_marks WHERE username=$username");
         while ($r = $result->fetch_array(MYSQLI_ASSOC)) {
-        $username = $r['username'];
-        $cur_state = $r['state'];
         echo '<tr><td>'.$username.'</td>';
         echo '<td>'.$cur_state.'</td>';
-        echo '<td><select class="editableSelect">
-        <option value="Admin">Admin</option>
-        <option value="Expert">Expert</option>
-        <option value="Admin/Expert">Admin/Expert</option>
-        <option value="User">User</option>
-        </select></td>
+        echo '<td></td>
         <td><button id ="'.$username.'" class="updateButton">Обновить</button></td><tr/>';
         } 
 ?>
