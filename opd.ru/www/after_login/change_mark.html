@@ -11,13 +11,21 @@ include("../php/experts_marks.php");
     <link rel="stylesheet" href="../css/style.css" />
     <style>
         table {
-            text-align: center;
             width: 100%;
             background-color:rgba(227, 196, 244, 0.4);
             border-collapse: collapse;
         }
         th{
             border-right: 1px  rgb(30, 125, 136);
+            padding: 5px;
+            text-align: left;
+            border-collapse: collapse;
+            height: 40px;
+        }
+        td {
+            padding: 5px;
+            text-align: left;
+            border-collapse: collapse;
         }
     </style>
 </head>
@@ -38,51 +46,194 @@ include("../php/experts_marks.php");
 <hr/>
 <div>
     <h2>Редактировать оценки</h2>
-  
-<table>
-    <tr style="height: 40px;">
-    <th>Профессия</th>
-    <th>Память</th>
-    <th>Выберите новый статус</th>
-    </tr>
-<?php
-    $conn = new mysqli("localhost", "root", "", "users");
+
+    <?php
+    $conn = new mysqli("localhost", "root", "");
     $username = $_SESSION['username'];
-    $result = $conn->query("SELECT * FROM experts_marks WHERE username=$username");
-        while ($r = $result->fetch_array(MYSQLI_ASSOC)) {
-        echo '<tr><td>'.$username.'</td>';
-        echo '<td>'.$cur_state.'</td>';
-        echo '<td></td>
-        <td><button id ="'.$username.'" class="updateButton">Обновить</button></td><tr/>';
-        } 
-?>
+    $id = $conn->query("SELECT id FROM users.user_data WHERE username='$username'")->fetch_array(MYSQLI_ASSOC)['id'];
+    ?>
+
+<table>
+    <tr>
+        <th>Изменить оценку</th>
+        <?php 
+            $result = $conn->query("SELECT * FROM users.experts_marks WHERE expert_id=$id");
+            while ($r = $result->fetch_array(MYSQLI_ASSOC)) {
+                $job_id = $r['job_id'];
+                echo '<td><button id="'.$job_id.'" name="'.$id.'" class="updateButton">Обновить</button></td>'; 
+            }
+        ?>
+    </tr>
+    <tr>
+        <th>Профессия</th>
+        <?php
+            $result = $conn->query("SELECT job_id FROM users.experts_marks WHERE expert_id=$id");
+            while ($r = $result->fetch_array(MYSQLI_ASSOC)) {
+            $job_id = $r['job_id'];
+            $job = $conn->query("SELECT name FROM pvk.jobs WHERE id=$job_id")->fetch_array(MYSQLI_ASSOC)['name'];
+            echo '<td>'.$job.'</td>';
+            }
+        ?>
+    </tr>
+    <tr>
+        <th>Память</th>
+        <?php
+            $id = 1;
+            $result = $conn->query("SELECT memory FROM users.experts_marks WHERE expert_id=$id");
+            while ($r = $result->fetch_array(MYSQLI_ASSOC)) {
+            $memory = $r['memory'];
+            echo '<td><input id="'.$id.'" class="editable-input" name="memory" type="number" value="'.$memory.'"></input></td>';
+            $id += 1;
+            }
+        ?>
+    </tr>
+    <tr>
+        <th>Эффективность</th>
+        <?php
+            $id = 1;
+            $result = $conn->query("SELECT effciency FROM users.experts_marks WHERE expert_id=$id");
+            while ($r = $result->fetch_array(MYSQLI_ASSOC)) {
+            $effciency = $r['effciency'];
+            echo '<td><input id="'.$id.'" class="editable-input" name="effciency" type="number" value="'.$effciency.'"></input></td>';
+            $id += 1;
+            }
+        ?>
+    </tr>
+    <tr>
+        <th>Навыки устного выражения</th>
+        <?php
+            $id = 1;
+            $result = $conn->query("SELECT oral_skills FROM users.experts_marks WHERE expert_id=$id");
+            while ($r = $result->fetch_array(MYSQLI_ASSOC)) {
+            $oral_skills = $r['oral_skills'];
+            echo '<td><input id="'.$id.'" class="editable-input" name="oral_skills" type="number" value="'.$oral_skills.'"></input></td>';
+            $id += 1;
+            }
+        ?>
+    </tr>
+    <tr>
+        <th>Профессиональный словарный запас</th>
+        <?php
+            $id = 1;
+            $result = $conn->query("SELECT prof_vocab FROM users.experts_marks WHERE expert_id=$id");
+            while ($r = $result->fetch_array(MYSQLI_ASSOC)) {
+            $prof_vocab = $r['prof_vocab'];
+            echo '<td><input id="'.$id.'" class="editable-input" name="prof_vocab" type="number" value="'.$prof_vocab.'"></input></td>';
+            $id += 1;
+            }
+        ?>
+    </tr>
+    <tr>
+        <th>Креативность</th>
+        <?php
+            $id = 1;
+            $result = $conn->query("SELECT creativity FROM users.experts_marks WHERE expert_id=$id");
+            while ($r = $result->fetch_array(MYSQLI_ASSOC)) {
+            $creativity = $r['creativity'];
+            echo '<td><input id="'.$id.'" class="editable-input" name="creativity" type="number" value="'.$creativity.'"></input></td>';
+            $id += 1;
+            }
+        ?>
+    </tr>
+    <tr>
+        <th>Способность к логическому рассуждению</th>
+        <?php
+            $id = 1;
+            $result = $conn->query("SELECT logic FROM users.experts_marks WHERE expert_id=$id");
+            while ($r = $result->fetch_array(MYSQLI_ASSOC)) {
+            $logic = $r['logic'];
+            echo '<td><input id="'.$id.'" class="editable-input" type="number" name="logic" value="'.$logic.'"></input></td>';
+            $id += 1;
+            }
+        ?>
+    </tr>
+    <tr>
+        <th>Коммуникабельность</th>
+        <?php
+            $id = 1;
+            $result = $conn->query("SELECT communication FROM users.experts_marks WHERE expert_id=$id");
+            while ($r = $result->fetch_array(MYSQLI_ASSOC)) {
+            $communication = $r['communication'];
+            echo '<td><input id="'.$id.'" class="editable-input" type="number" name="communication" value="'.$communication.'"></input></td>';
+            $id += 1;
+            }
+        ?>
+    </tr>
+    <tr>
+        <th>Тайм-менеджмент</th>
+        <?php
+            $id = 1;
+            $result = $conn->query("SELECT time_manag FROM users.experts_marks WHERE expert_id=$id");
+            while ($r = $result->fetch_array(MYSQLI_ASSOC)) {
+            $time_manag = $r['time_manag'];
+            echo '<td><input id="'.$id.'" class="editable-input" type="number" name="time_manag" value="'.$time_manag.'"></input></td>';
+            $id += 1;
+            }
+        ?>
+    </tr>
 </table>
 
 <script>
-    $(document).ready(function() {
-        $('.updateButton').on('click', function() {
-            var selectedId = $(this).attr('id');
-            var selectedValue = $(this).closest('tr').find('.editableSelect').val();
-            var selectedText = $(this).closest('tr').find('.editableSelect option:selected').text();
-            var selectedData = {
-                id: selectedId,
-                value: selectedValue,
-                text: selectedText
-            };
-            console.log(selectedData);
+    
+    // const getValuesButton = document.getElementById('getValuesButton');
 
-            // Send the updated data to the server using AJAX
-            $.ajax({
-                type: 'POST',
-                url: 'update_table_data.php', // Specify the URL to handle the update on the server
-                data: selectedData,
-                success: function(response) {
-                    console.log('Data updated successfully:', response);
-                    window.location.reload();
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error updating data:', error);
-                }
+    // getValuesButton.addEventListener('click', function() {
+    //     const inputElements = document.querySelectorAll('.editable-input');
+    //     const inputValues = Array.from(inputElements).map(input => input.value);
+    //     console.log('Input values:', inputValues);
+    // });
+
+    $(document).ready(function() {
+        // Get all buttons by class name or any other selector
+    const buttons = document.querySelectorAll('button');
+
+        // Add click event listener to each button
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Retrieve the ID of the clicked button
+                const buttonId = this.id;
+                const buttonName = this.name;
+                console.log('Clicked button ID:', buttonId);
+
+                const inputElements = document.querySelectorAll(`[id='${buttonId}'][class="editable-input"]`);
+                // const inputValues = Array.from(inputElements).map(input => input.value);
+                // console.log('Input values:', inputValues);
+                const array = Array.from(inputElements).map(element => {
+                    return {
+                        id: element.name,
+                        val: element.value,
+                        // Add more properties as needed
+                    };
+                });
+                array.push({
+                    id: buttonId,
+                    val: buttonName,
+                });
+
+                console.log(array);
+
+                // Convert the object to a JSON string
+                const jsonData = JSON.stringify(array);
+
+                // Make an AJAX request to send the data to a PHP script
+                const xhr = new XMLHttpRequest();
+                const url = "update_table_data_1.php";
+
+                xhr.open("POST", url, true);
+                xhr.setRequestHeader("Content-Type", "application/json");
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        console.log(xhr.responseText);
+                    }
+                    else {
+                        console.log(xhr.status, xhr.readyState);
+                    }
+                };
+
+                xhr.send(jsonData);
+
+
             });
         });
     });
