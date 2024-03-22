@@ -6,15 +6,6 @@
     <title>Профессия</title> 
     <link rel="stylesheet" href="../css/style.css"> 
     <link rel="stylesheet" href="../css/profess.css">
-    <style>
-        /* body{
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            justify-content: center;
-            background-image: linear-gradient(to top, #9795fe 0%, #fdc8d4 100%);
-        } */
-    </style>
 </head> 
 <body>
     <?php
