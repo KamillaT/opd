@@ -6,6 +6,15 @@
     <title>Профессия</title> 
     <link rel="stylesheet" href="../css/style.css"> 
     <link rel="stylesheet" href="../css/profess.css">
+    <style>
+        /* body{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            background-image: linear-gradient(to top, #9795fe 0%, #fdc8d4 100%);
+        } */
+    </style>
 </head> 
 <body>
     <?php
@@ -170,37 +179,137 @@
             </div> 
         </div>
     </div>
-    <div class="container3">
-        <div class="card" style="--d:1;">
-            <div class="content">
-                <div class="h2">
-                    <h2>Память</h2>
-                </div>
-                <div class="text">
-                    <p>Способность мозга, с помощью которой данные или информация кодируются, хранятся и извлекаются при необходимости.</p>
-                </div>
-            </div>
+    <div class="shell">
+        <div class="carousel">
+            <ol class="boxs">
+                <li class="box">
+                    <div class="h2">
+                        <h2>Память</h2>
+                    </div>
+                    <div class="text">
+                        <p>Способность мозга, с помощью которой данные или информация кодируются, хранятся и извлекаются при необходимости.</p>
+                    </div>
+                </li>
+                <li class="box">
+                    <div class="content">
+                        <div class="h2">
+                            <h2>Эффективность</h2>
+                        </div>
+                        <div class="text">
+                            <p>способность выполнять работу и достигать необходимого или желаемого результата с наименьшей затратой времени и усилий.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="box">
+                    <div class="content">
+                        <div class="h2">
+                            <h2>Навыки устного выражения</h2>
+                        </div>
+                        <div class="text">
+                            <p> Устные навыки используются для повышения четкости речи в целях эффективного общения.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="box">
+                    <div class="content">
+                        <div class="h2">
+                            <h2>Профессиональный словарный запас</h2>
+                        </div>
+                        <div class="text">
+                            <p>инструмент коммуникации и ключевой идентификатор, отражающий профессиональные знания и навыки.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="box">
+                    <div class="content">
+                        <div class="h2">
+                            <h2>Коммуникабельность</h2>
+                        </div>
+                        <div class="text">
+                            <p>способность к общению, к установке связей, контактов, общительность</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="box">
+                    <div class="content">
+                        <div class="h2">
+                            <h2>Креативности</h2>
+                        </div>
+                        <div class="text">
+                            <p>умение человека отступать от стандартных идей, правил и шаблонов.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="box">
+                    <div class="content">
+                        <div class="h2">
+                            <h2>Способность к логическому рассуждению</h2>
+                        </div>
+                        <div class="text">
+                            <p>мыслительный процесс, задействующий логику, и способность видеть закономерности, причинно-следственные связи и оперировать ими в уме.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="box">
+                    <div class="content">
+                        <div class="h2">
+                            <h2>Тайм-менеджмент</h2>
+                        </div>
+                        <div class="text">
+                            <p>техника организации осознанного контроля и распределения времени.</p>
+                        </div>
+                    </div>
+                </li>
+            </ol>
         </div>
-        <div class="card" style="--d:2;">
-            <div class="content">
-                <div class="h2">
-                    <h2>Память</h2>
-                </div>
-                <div class="text">
-                    <p>Способность мозга, с помощью которой данные или информация кодируются, хранятся и извлекаются при необходимости.</p>
-                </div>
-            </div>
-        </div>
-        <div class="card" style="--d:3;">
-            <div class="content">
-                <div class="h2">
-                    <h2>Память</h2>
-                </div>
-                <div class="text">
-                    <p>Способность мозга, с помощью которой данные или информация кодируются, хранятся и извлекаются при необходимости.</p>
-                </div>
-            </div>
+        <div class="arrows">
+            <button class="up"><i class="icon-shangjiantou"></i></button>
+            <button class="next"><i class="icon-xiajiantou"></i></button>
         </div>
     </div>
 </body> 
+<script>
+    const shell = document.querySelector('.boxs');
+    const cells = shell.querySelectorAll('.box');
+    const cellWidth = shell.offsetWidth;
+    const cellHeight = shell.offsetHeight;
+    const cellSize = cellHeight;
+    const cellCount = 8;
+    const radius = Math.round((cellSize/1.8)/Math.tan(Math.PI/cellCount));
+    const theta = 360/cellCount;
+    let selectedIndex = 0;
+    function rotateshell(){
+        const angle = theta* selectedIndex * -1;
+        shell.style.transform = "translateZ(" + -radius + "px) rotateX(" + -angle + "deg)";
+        const cellIndex = selectedIndex < 0 ? (cellCount - ((selectedIndex * -1) % cellCount)) : (selectedIndex % cellCount);
+        cells.forEach((cell, index) =>{
+            if(cellIndex === index) {
+                cell.classList.add("selected");
+            }else{
+                cell.classList.remove("selected");
+            }
+        });
+    }
+    function selectPrev(){
+        selectedIndex--;
+        rotateshell();
+    }
+    function selectNext(){
+        selectedIndex++;
+        rotateshell();
+    }
+    const prevButton = document.querySelector(".up");
+    prevButton.addEventListener("click", selectPrev);
+    const nextButton = document.querySelector(".next");
+    nextButton.addEventListener("click", selectNext);
+
+    function initshell(){
+        cells.forEach((cell, i) => {
+            const cellAngle = theta * i;
+            cell.style.transform = "rotateX(" + -cellAngle + "deg) translateZ(" + radius + "px)";
+        });
+        rotateshell();
+    }
+    initshell();
+</script>
 </html>
