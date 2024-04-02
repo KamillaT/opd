@@ -65,6 +65,14 @@
             <form id="register" class="form" method="post" action="../php/add_users.php">
                 <input type="text" class="input-filed" name="username" placeholder="Имя пользователя">
                 <input type="text" class="input-filed" name="password" placeholder="Пароль">
+                <select id="editableSelect" name="age">
+                    <option value="15-19">15-19</option>
+                    <option value="20-24">20-24</option>
+                    <option value="25-29">25-29</option>
+                    <option value="30-34">20-24</option>
+                    <option value="35-39">25-29</option>
+                    <option value="40-44">40-44</option>
+                </select>
                 <input type="checkbox" class="check-box"><span>Я согласен с правилами и условиями</span>
                 <button type="submit" class="submit-btn" onclick="javascript: submitform();">Зарегистрироваться</button>
             </form>
@@ -73,6 +81,8 @@
             var logIn = document.getElementById("login");
             var register = document.getElementById("register");
             var button = document.getElementById("btn");
+            var selectedValue = document.getElementsByClassName('editableSelect').value;
+            console.log(selectedValue);
         
             function registration() {
             logIn.style.left = "-400px";

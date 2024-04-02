@@ -53,6 +53,7 @@
             <form id="register" class="form" method="post" action="../php/add_users.php">
                 <input type="text" class="input-filed" name="username" placeholder="Имя пользователя">
                 <input type="text" class="input-filed" name="password" placeholder="Пароль">
+                <input type="number" class="editable-input"></input>
                 <input type="checkbox" class="check-box"><span>Я согласен с правилами и условиями</span>
                 <button type="submit" class="submit-btn" onclick="javascript: submitform();">Зарегистрироваться</button>
             </form>
@@ -60,8 +61,7 @@
         <script>
             var logIn = document.getElementById("login");
             var register = document.getElementById("register");
-            var button = document.getElementById("btn");
-        
+            var button = document.getElementById("btn");    
             function registration() {
             logIn.style.left = "-400px";
             register.style.left = "50px";

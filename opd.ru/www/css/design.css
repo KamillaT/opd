@@ -89,12 +89,12 @@ input, label {
 }
 .button_menu a {
     display: block;
-    float: right;
+    float: center;
     height: 50px;
     width: 100px;
     margin-right: 5px;
     text-align: center;
-    line-height: 50px;
+    line-height: normal;
     text-decoration: none;
     padding: 10px 20px;
     border: 5px solid transparent;
@@ -104,7 +104,7 @@ input, label {
     background-origin: border-box;
 }
 .b1 {
-    font-size: larger;
+    font-size: small;
     color: black;
     font-weight: bold;
 }
