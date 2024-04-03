@@ -22,23 +22,25 @@
     <div class="sitplace"></div>
 <h1>Привет, <?php echo $_SESSION['username'];?>!</h1>
 <hr/>
-<div>
-    <a href="test_results.php">Результаты тестирований</a>
+<div class="button_menu">
     <?php
         $conn = new mysqli("localhost", "root", "", "users");
         $username = $_SESSION['username'];
+        $age = $conn->query("SELECT age FROM user_data WHERE username='$username'")->fetch_array(MYSQLI_ASSOC)['age'];
+        echo '<p>Ваш возраст: '.$age.'</p>';
+        echo '<a href="test_results.php" class="b1">Результаты тестирований</a>';
         $result = $conn->query("SELECT * FROM user_data WHERE username = '$username'");
         $row = $result->fetch_array(MYSQLI_ASSOC);
         $state = $row['state'];
         if ($state == 'Admin') {
-            echo '<a href="change_user_state.html">Редактировать статусы</a>';
+            echo '<a href="change_user_state.html" class="b1">Редактировать статусы</a>';
         }
         else if ($state == 'Expert') {
-            echo '<a href="change_mark.html">Редактировать оценку</a>';
+            echo '<a href="change_mark.html" class="b1">Редактировать оценку</a>';
         }
         else if ($state == 'Admin/Expert') {
-            echo '<a href="change_user_state.html">Редактировать статусы</a>';
-            echo '<a href="change_mark.html">Редактировать оценку</a>';
+            echo '<a href="change_user_state.html" class="b1">Редактировать статусы</a>';
+            echo '<a href="change_mark.html" class="b1">Редактировать оценку</a>';
         }
     ?>
 </div>

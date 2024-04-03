@@ -7,11 +7,12 @@
 	$conn->select_db($db);
 	
 	$table_name = "user_data";
-	$query_table = "CREATE TABLE IF NOT EXISTS $table_name (id INT PRIMARY KEY AUTO_INCREMENT, username VARCHAR (255) NOT NULL, pswd VARCHAR (255) NOT NULL, state VARCHAR (255) NOT NULL)";
+	$query_table = "CREATE TABLE IF NOT EXISTS $table_name (id INT PRIMARY KEY AUTO_INCREMENT, username VARCHAR (255) NOT NULL, 
+		pswd VARCHAR (255) NOT NULL, state VARCHAR (255) NOT NULL, age VARCHAR (45)  NOT NULL)";
 	$conn->query($query_table);
 	$result = $conn->query("SELECT * FROM $table_name WHERE username = 'kami'");
 	if($result->num_rows == 0) {
-		$sql = "INSERT INTO $table_name (username, pswd, state) VALUES ('kami', 'kami', 'Admin/Expert')";
+		$sql = "INSERT INTO $table_name (username, pswd, state, age) VALUES ('kami', 'kami', 'Admin/Expert', '15-19')";
 		$conn->query($sql);
 	}
 	else {
@@ -21,7 +22,7 @@
 	
 	$result = $conn->query("SELECT * FROM $table_name WHERE username = 'ruohan'");
 	if($result->num_rows == 0) {
-		$sql = "INSERT INTO $table_name (username, pswd, state) VALUES ('ruohan', 'ruohan', 'Admin/Expert')";
+		$sql = "INSERT INTO $table_name (username, pswd, state, age) VALUES ('ruohan', 'ruohan', 'Admin/Expert', '15-19')";
 		$conn->query($sql);
 	}
 	else {
@@ -31,7 +32,7 @@
 	
 	$result = $conn->query("SELECT * FROM $table_name WHERE username = 'tuan'");
 	if($result->num_rows == 0) {
-		$sql = "INSERT INTO $table_name (username, pswd, state) VALUES ('tuan', 'tuan', 'Admin/Expert')";
+		$sql = "INSERT INTO $table_name (username, pswd, state, age) VALUES ('tuan', 'tuan', 'Admin/Expert', '15-19')";
 		$conn->query($sql);
 	}
 	else {

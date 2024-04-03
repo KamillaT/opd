@@ -19,11 +19,15 @@
         </ul>
     </div>
     <div class="sitplace"></div>
-<h1>Registration</h1>
-<hr/>
 <div>
 <h2>Успешно! Текущий сеанс: <?php echo $_SESSION['username'];?></h2>
-<h2><a href="logout.php">Logout</a></h2>
+<?php
+    $conn = new mysqli("localhost", "root", "", "users");
+    $username = $_SESSION['username'];
+    $age = $conn->query("SELECT age FROM user_data WHERE username='$username'")->fetch_array(MYSQLI_ASSOC)['age'];
+    // echo '<p>Ваш возраст: '.$age.'</p>';
+?>
+<!-- <h2><a href="logout.php">Logout</a></h2> -->
 </div>
 </body>
 </html>

@@ -9,12 +9,12 @@
 </head>
 <body>
     <?php
-		$conn = new mysqli("localhost", "root", "");
+		$conn = new mysqli("localhost", "root", "", "users");
 
-		$db = "pvk";
-		$query = "CREATE DATABASE IF NOT EXISTS $db";
-		$conn->query($query);
-		$conn->select_db($db);
+		// $db = "pvk";
+		// $query = "CREATE DATABASE IF NOT EXISTS $db";
+		// $conn->query($query);
+		// $conn->select_db($db);
 
 		$table = "jobs";
 		$conn->query("CREATE TABLE IF NOT EXISTS $table (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR (255) NOT NULL)");
