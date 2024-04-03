@@ -132,21 +132,22 @@
     width: 100%;
     height: 210px;
     position: relative;
-    /* transform-style: preserve-3d; */
+    text-align: center;
+    transform-style: preserve-3d;
     transition: 1s;
 }
 
 .box{
     align-items: center;
-    position: relative;
-    width: 100%;
+    position: absolute;
+    width: 1150px;
     height: 200px;
     border: 2px solid white;
     border-radius: 10px;
     overflow: hidden;
     opacity: .7;
     text-align: center;
-    background-image: linear-gradient(#b3f3d6 0%, #ebfdc8 100%);
+    background-color: #f8faff;
 }
 
 .box h2{
@@ -154,13 +155,15 @@
 }
 
 .box .content{
-    margin: 0px 20px;
+    margin: 50px 50px;
+    text-align: center;
 }
 
 .box.selected{
-    border-color: goldenrod;
+    border-color: rgb(255, 255, 255);
     border-width: 5px;
     opacity: 1;
+    margin: 0px;
 }
 
 i {

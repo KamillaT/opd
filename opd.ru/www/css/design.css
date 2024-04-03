@@ -15,8 +15,8 @@ body {
     margin: 0; 
     min-height: 100vh; 
     background-color: rgb(235, 255, 229); 
-    background-image: 
-        radial-gradient(closest-side, rgb(255, 211, 203), rgba(235, 105,78,0)), 
+    background-image: linear-gradient(to right, #fbdfcb, #f5c8fd);
+        /* radial-gradient(closest-side, rgb(255, 211, 203), rgba(235, 105,78,0)), 
         radial-gradient(closest-side, rgb(254, 230, 246), rgba(243,11,164,0)), 
         radial-gradient(closest-side, rgb(255, 248, 219), rgba(254,234,131,0)), 
         radial-gradient(closest-side, rgb(223, 235, 255), rgba(170,142,245,0)), 
@@ -34,7 +34,7 @@ body {
         -30vmax -10vmax, 
         50vmax 50vmax; 
     background-repeat: no-repeat; 
-    animation: 5s movement linear infinite; 
+    animation: 5s movement linear infinite;  */
 } 
  
 @keyframes movement{ 
