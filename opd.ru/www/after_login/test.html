@@ -12,6 +12,45 @@
             justify-content: space-between; 
         }
         .test-box {
+            width: calc(26.666% - 7px);
+            height: 150px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .test-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .test-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .test-button {
+            background-color: rgb(248, 129, 208);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            outline: none;
+            border-radius: 40px;
+        }
+
+        /* main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; 
+        }
+        .test-box {
             flex: 0 0 45%;
         }
         a {
@@ -49,7 +88,7 @@
             font-size: 16px;
             outline: none;
             border-radius: 40px;
-        }
+        } */
     </style>
 </head>
 <body>
@@ -59,7 +98,7 @@
             <li><a href="index.html">Главная</a></li>
             <li><a href="list_expert.html">Эксперты</a></li>
             <li><a href="test.html">Тестированиe</a></li>
-            <li><a href="../personal_account.php">Личный кабинет</a></li>
+            <li><a href="personal_account.php">Личный кабинет</a></li>
             <li style="float: right"><a href="../test.html">Выйти</a> 
         </ul>
     </div>
@@ -122,7 +161,8 @@
         <div class="test-box">
             <div class="test-title">Память</div>
             <div class="test-icon">🧠</div>
-             <a href="./tests/memoryTest.html" class="test-button">Пройти</a>
+             <!-- <a href="./tests/memoryTest.html" class="test-button">Пройти</a> -->
+             <a href="#" class="test-button">Пройти</a>
         </div>
         <div class="test-box">
             <div class="test-title">Мышление</div>

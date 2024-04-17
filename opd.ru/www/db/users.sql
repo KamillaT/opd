@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 17, 2024 at 08:52 AM
+-- Generation Time: Apr 17, 2024 at 08:03 PM
 -- Server version: 8.0.36-0ubuntu0.22.04.1
 -- PHP Version: 8.1.2-1ubuntu2.14
 
@@ -130,7 +130,9 @@ INSERT INTO `tests_info` (`id`, `name`) VALUES
 (7, 'Сложение (текст)'),
 (8, 'Аналоговое преследование'),
 (9, 'Внимание'),
-(10, 'Аналоговое слежение');
+(10, 'Аналоговое слежение'),
+(11, 'Память'),
+(12, 'Мышление');
 
 -- --------------------------------------------------------
 
@@ -180,7 +182,15 @@ INSERT INTO `test_results` (`id`, `user_id`, `test_id`, `test_name`, `avg_time`,
 (28, 1, 10, 'Аналоговое слежение', '18.80', '', '24.99', '', '24.99'),
 (29, 1, 9, 'Внимание', '1115.6842105263158', '', '19', '', '112'),
 (30, 1, 7, 'Сложение (текст)', '1014.80', '9133.20', '9', '1', '50.424844720926096'),
-(31, 1, 10, 'Аналоговое слежение', '18.78', '', '21.49', '', '21.49');
+(31, 1, 10, 'Аналоговое слежение', '18.78', '', '21.49', '', '21.49'),
+(32, 2, 4, 'Точность реакции (простая)', '98', '', '', '', '98'),
+(33, 2, 10, 'Аналоговое слежение', '19.65', '', '14.54', '', '14.54'),
+(34, 2, 8, 'Аналоговое преследование', '0.39', '', '51.12', '', '51.12'),
+(35, 2, 8, 'Аналоговое преследование', '1.00', '', '62.24', '', '62.24'),
+(36, 1, 9, 'Внимание', '1223.6', '', '20', '', '122'),
+(37, 7, 6, 'Звук', '726.78', '6541.00', '', '', '72.68'),
+(38, 7, 9, 'Внимание', '4212.368421052632', '', '19', '', '421'),
+(39, 1, 9, 'Внимание', '1724.75', '', '20', '', '172');
 
 -- --------------------------------------------------------
 
@@ -204,10 +214,11 @@ CREATE TABLE `user_data` (
 INSERT INTO `user_data` (`id`, `username`, `pswd`, `state`, `age`, `gender`) VALUES
 (1, 'kami', 'kami', 'Admin/Expert', 2005, 'female'),
 (2, 'ruohan', 'ruohan', 'Admin/Expert', 2005, 'female'),
-(3, 'tuan', 'tuan', 'Admin/Expert', 2005, 'male'),
+(3, 'tuan', 'tuan', 'Admin/Expert', 2003, 'male'),
 (4, 'ann', 'ann', 'User', 1982, 'female'),
 (5, 'alex', 'alex', 'User', 1994, 'male'),
-(6, 'alice', 'alice', 'User', 2004, 'female');
+(6, 'alice', 'alice', 'User', 2004, 'female'),
+(7, 'Фан Нгок Туан', '1111', 'User', 2003, 'male');
 
 --
 -- Indexes for dumped tables
@@ -280,19 +291,19 @@ ALTER TABLE `qualities`
 -- AUTO_INCREMENT for table `tests_info`
 --
 ALTER TABLE `tests_info`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `test_results`
 --
 ALTER TABLE `test_results`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `user_data`
 --
 ALTER TABLE `user_data`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
