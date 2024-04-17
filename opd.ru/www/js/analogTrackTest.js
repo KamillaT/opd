@@ -1,37 +1,38 @@
-const box = document.getElementById("box");
-const point = document.getElementById("point");
-const startButton = document.getElementById("startButton");
-const reaction = document.getElementById("reaction");
-const testScore = document.getElementById("testScore");
-const reactionValues = [];
-const deviationValues = [];
+const container = document.getElementById("container");
+const ball = document.getElementById("ball");
+const startButton = document.getElementById("start");
 const mark = document.createElement("div");
 mark.classList.add("mark");
-mark.style.left = (box.offsetWidth / 2 - 5) + "px";
-box.appendChild(mark);
+mark.style.left = (container.offsetWidth / 2 - 5) + "px";
+container.appendChild(mark);
+const reactionT = document.getElementById('reaction');
+const scoreMy = document.getElementById("scoreMy");
 let currentPosition = 0;
 let direction = "right";
 let randomDirectionInterval;
-let pointMovingInternal;
+let moveBallInterval;
 let resistance = 1;
-let hitsAmount = 0;
+let numHits = 0;
 let count = 0;
+const reactionValues = [];
+const deviationValues = [];
 
-function startObjectMoving() {
+function startMovingBall() {
     const progress = document.getElementById("progress");
     let value = 0;
-    const intervalNumber = setInterval(() => {
-        value ++;
+    const intervalId = setInterval(() => {
+        value++;
         progress.value = value;
-        if (value === 50) {
-            clearInterval(intervalNumber);
+
+        if (value === 30) {
+            clearInterval(intervalId);
         }
-    },1000);
+    }, 1000);
     startButton.style.display = "none";
-    pointMovingInternal = setInterval(() => {
+    moveBallInterval = setInterval(() => {
         if (direction === "right") {
             currentPosition += 10 * resistance;
-            if (currentPosition >= box.offsetWidth - point.offsetWidth) {
+            if (currentPosition >= container.offsetWidth - ball.offsetWidth) {
                 direction = "left";
             }
         } else {
@@ -40,19 +41,20 @@ function startObjectMoving() {
                 direction = "right";
             }
         }
-        point.style.left = currentPosition + "px";
-        const pointRight = currentPosition + point.offsetWidth;
+        ball.style.left = currentPosition + "px";
+        const ballRight = currentPosition + ball.offsetWidth;
         const markLeft = mark.offsetLeft;
         const markRight = mark.offsetLeft + mark.offsetWidth;
-        if (pointRight >= markLeft && currentPosition <= markRight) {
-            resistance = 0.8;
-            if (currentPosition + ReadableByteStreamController.offsetWidth / 2 === markLeft + mark.offsetWidth / 2) {
-                hitsAmount ++;
-                hitPercentageCalculator(progress);
+        if (ballRight >= markLeft && currentPosition <= markRight) {
+            resistance = 0.6;
+            if (currentPosition + ball.offsetWidth / 2 === markLeft + mark.offsetWidth / 2) {
+                numHits++;
+                calculateHitPercentage(progress);
             }
-        } else { 
+        } else {
             resistance = 1;
         }
+
     }, 20);
 
     randomDirectionInterval = setInterval(() => {
@@ -63,6 +65,68 @@ function startObjectMoving() {
         }
     }, 1000);
     document.addEventListener("keydown", (event) => {
-        const 
-    })
+        if (event.key === "ArrowLeft") {
+            direction = "left";
+            if (direction === "right") {
+                resistance = 2;
+            } else {
+                resistance = 0.5;
+            }
+        } else if (event.key === "ArrowRight") {
+            direction = "right";
+            if (direction === "left") {
+                resistance = 2;
+            } else {
+                resistance = 0.5;
+            }
+        }
+        const ballRight = currentPosition + ball.offsetWidth;
+        const markLeft = mark.offsetLeft;
+        const markRight = mark.offsetLeft + mark.offsetWidth;
+        const distanceToMark = Math.min(Math.abs(ballRight - markLeft), Math.abs(currentPosition - markRight));
+        const reaction = distanceToMark / 10;
+        reactionValues.push(reaction.toFixed(2));
+        reactionT.innerText = `Скорость реакции на изменение движения шарика: ${reactionValues[reactionValues.length - 1]} с/шарик`;
+    });
+
+    function calculateHitPercentage(progress) {
+        if ( progress.value <= 30) {
+        const deviation = Math.abs(currentPosition + ball.offsetWidth / 2 - mark.offsetLeft - mark.offsetWidth / 2 + mark.offsetWidth / 2 - ball.offsetWidth / 2);
+        const containerWidth = container.offsetWidth;
+        const deviationPercentage = ((containerWidth / 2 - deviation) / (containerWidth / 2)) * 100;
+        deviationValues.push(Math.abs(deviationPercentage.toFixed(2)));
+        scoreMy.innerText = `Процент отклонения от средней границы: ${deviationValues[deviationValues.length - 1]}%`;
+        }
+    }
+
+    setInterval(() => {
+        calculateHitPercentage(progress);
+    }, 2000);
+
+    setTimeout(() => {
+        clearInterval(moveBallInterval);
+        clearInterval(randomDirectionInterval);
+        startButton.style.display = "block";
+        startButton.disabled = false;
+        
+        const reactionAverage = reactionValues.reduce((acc, val) => acc + Number(val), 0) / reactionValues.length;
+        const deviationAverage = deviationValues.reduce((acc, val) => acc + Number(val), 0) / deviationValues.length;
+        reactionT.innerText = `Средняя скорость реакции на изменение движения шарика: ${reactionAverage.toFixed(2)} с/шарик`;
+        scoreMy.innerText = `Среднее отклонение от средней границы: ${deviationAverage.toFixed(2)}%`;
+        //sendForm
+        document.getElementById("avg_time").value = reactionAverage.toFixed(2);
+        document.getElementById("correct").value = deviationAverage.toFixed(2);
+        document.getElementById("score").value = deviationAverage.toFixed(2);
+        document.getElementById("submit-button").click();
+        //sendForm
+        centerStartButton();
+    }, 30000);
+
+    const centerStartButton = () => {
+        const containerWidth = document.documentElement.clientWidth;
+        const buttonWidth = startButton.offsetWidth;
+        const leftMargin = (containerWidth - buttonWidth) / 2;
+        startButton.style.marginLeft = leftMargin + "px";
+    };
 }
+startButton.addEventListener("click", startMovingBall);

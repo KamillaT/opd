@@ -20,6 +20,8 @@
         $conn->query("INSERT INTO $table_name(name) VALUES ('Звук')");    
         $conn->query("INSERT INTO $table_name(name) VALUES ('Сложение (текст)')");
         $conn->query("INSERT INTO $table_name(name) VALUES ('Аналоговое преследование')");
+        $conn->query("INSERT INTO $table_name(name) VALUES ('Внимание')");
+        $conn->query("INSERT INTO $table_name(name) VALUES ('Аналоговое слежение')");
     }
 	$table_name = "test_results";
     // $query_table = "CREATE TABLE IF NOT EXISTS $table_name (id INT PRIMARY KEY AUTO_INCREMENT, user_id INT NOT NULL, test_id INT NOT NULL,

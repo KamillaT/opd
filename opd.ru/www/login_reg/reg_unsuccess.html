@@ -59,31 +59,27 @@
                 <input type="text" class="input-filed" name="username" placeholder="Имя пользователя">
                 <input type="text" class="input-filed" name="password" placeholder="Пароль">
                 <input type="checkbox" class="check-box"><span>Запомнить пароль</span>
-                <button type="submit" class="submit-btn" onclick="javascript: submitform();">Войти</button>
+                <!-- <button type="submit" class="submit-btn" onclick="javascript: submitForm();">Войти</button> -->
+                <button type="submit" class="submit-btn">Войти</button>
             </form>
         
             <form id="register" class="form" method="post" action="../php/add_users.php">
-                <input type="text" class="input-filed" name="username" placeholder="Имя пользователя">
-                <input type="text" class="input-filed" name="password" placeholder="Пароль">
-                <select id="editableSelect" name="age">
-                    <option value="15-19">15-19</option>
-                    <option value="20-24">20-24</option>
-                    <option value="25-29">25-29</option>
-                    <option value="30-34">20-24</option>
-                    <option value="35-39">25-29</option>
-                    <option value="40-44">40-44</option>
+                <input type="text" class="input-filed" id="username" name="username" placeholder="Имя пользователя">
+                <input type="text" class="input-filed" id="password" name="password" placeholder="Пароль">
+                <input type="number" class="editable-input" id="birth" name="birth" placeholder="1990"></input>
+                <select class="editableSelect" id="gender" name="gender">
+                    <option value="male">М</option>
+                    <option value="female">Ж</option>
                 </select>
                 <input type="checkbox" class="check-box"><span>Я согласен с правилами и условиями</span>
-                <button type="submit" class="submit-btn" onclick="javascript: submitform();">Зарегистрироваться</button>
+                <!-- <button type="submit" class="submit-btn" onclick="javascript: submitForm();">Зарегистрироваться</button> -->
+                <button type="submit" class="submit-btn">Зарегистрироваться</button>
             </form>
         </div>
         <script>
             var logIn = document.getElementById("login");
             var register = document.getElementById("register");
-            var button = document.getElementById("btn");
-            var selectedValue = document.getElementsByClassName('editableSelect').value;
-            console.log(selectedValue);
-        
+            var button = document.getElementById("btn");  
             function registration() {
             logIn.style.left = "-400px";
             register.style.left = "50px";
@@ -94,10 +90,6 @@
             logIn.style.left = "50px";
             register.style.left = "450px";
             button.style.left = "0";
-            }
-            function submitform()
-            {
-            document.register.submit();
             }
         </script>
     </body>

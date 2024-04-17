@@ -12,7 +12,7 @@
 	$conn->query($query_table);
 	$result = $conn->query("SELECT * FROM $table_name WHERE username = 'kami'");
 	if($result->num_rows == 0) {
-		$sql = "INSERT INTO $table_name (username, pswd, state, age) VALUES ('kami', 'kami', 'Admin/Expert', '15-19')";
+		$sql = "INSERT INTO $table_name (username, pswd, state, age, gender) VALUES ('kami', 'kami', 'Admin/Expert', '2005', 'female')";
 		$conn->query($sql);
 	}
 	else {
@@ -22,7 +22,7 @@
 	
 	$result = $conn->query("SELECT * FROM $table_name WHERE username = 'ruohan'");
 	if($result->num_rows == 0) {
-		$sql = "INSERT INTO $table_name (username, pswd, state, age) VALUES ('ruohan', 'ruohan', 'Admin/Expert', '15-19')";
+		$sql = "INSERT INTO $table_name (username, pswd, state, age, gender) VALUES ('ruohan', 'ruohan', 'Admin/Expert', '2005', 'female')";
 		$conn->query($sql);
 	}
 	else {
@@ -32,7 +32,7 @@
 	
 	$result = $conn->query("SELECT * FROM $table_name WHERE username = 'tuan'");
 	if($result->num_rows == 0) {
-		$sql = "INSERT INTO $table_name (username, pswd, state, age) VALUES ('tuan', 'tuan', 'Admin/Expert', '15-19')";
+		$sql = "INSERT INTO $table_name (username, pswd, state, age, gender) VALUES ('tuan', 'tuan', 'Admin/Expert', '2005', 'male')";
 		$conn->query($sql);
 	}
 	else {
@@ -40,12 +40,15 @@
 		$conn->query($sql);	
 	}
 
-	$username = $_REQUEST['username'];
-	$password =  $_REQUEST['password'];
-	$age = $_REQUEST['age'];
+	// debug_to_console("test");
+	$username = $_POST['username'];
+	$password =  $_POST['password'];
+	$birth = $_POST['birth'];
+	$gender = $_POST['gender'];
+	// debug_to_console($username, $password, $birth, $gender);
 	$result = $conn->query("SELECT * FROM $table_name WHERE username = '$username'");
 	if($result->num_rows == 0) {
-		$sql = "INSERT INTO $table_name (username, pswd, state, age) VALUES ('$username', '$password', 'User', '$age')";
+		$sql = "INSERT INTO $table_name (username, pswd, state, age, gender) VALUES ('$username', '$password', 'User', '$birth', '$gender')";
 		$conn->query($sql);
 		header('Location: ../login_reg/reg_success.html');
 	}

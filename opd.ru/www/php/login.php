@@ -12,7 +12,7 @@
 	$conn->query($query_table);
 	$result = $conn->query("SELECT * FROM $table_name WHERE username = 'kami'");
 	if($result->num_rows == 0) {
-		$sql = "INSERT INTO $table_name (username, pswd, state, age) VALUES ('kami', 'kami', 'Admin/Expert', '15-19')";
+		$sql = "INSERT INTO $table_name (username, pswd, state, age, gender) VALUES ('kami', 'kami', 'Admin/Expert', '2005', 'female')";
 		$conn->query($sql);
 	}
 	else {
@@ -22,7 +22,7 @@
 	
 	$result = $conn->query("SELECT * FROM $table_name WHERE username = 'ruohan'");
 	if($result->num_rows == 0) {
-		$sql = "INSERT INTO $table_name (username, pswd, state, age) VALUES ('ruohan', 'ruohan', 'Admin/Expert', '15-19')";
+		$sql = "INSERT INTO $table_name (username, pswd, state, age, gender) VALUES ('ruohan', 'ruohan', 'Admin/Expert', '2005', 'female')";
 		$conn->query($sql);
 	}
 	else {
@@ -32,7 +32,7 @@
 	
 	$result = $conn->query("SELECT * FROM $table_name WHERE username = 'tuan'");
 	if($result->num_rows == 0) {
-		$sql = "INSERT INTO $table_name (username, pswd, state, age) VALUES ('tuan', 'tuan', 'Admin/Expert', '15-19')";
+		$sql = "INSERT INTO $table_name (username, pswd, state, age, gender) VALUES ('tuan', 'tuan', 'Admin/Expert', '2005', 'male')";
 		$conn->query($sql);
 	}
 	else {
