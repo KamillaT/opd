@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/style.css"/>
     <title>Аналоговое слежение</title>
+    <style>
+        .right-align {
+            float: right; 
+        }
+    </style>
 </head>
 
 <body>
@@ -31,25 +36,27 @@
         <div class="modal-content">
             <h2>Инструкция</h2>
             <p>
-                Нажмите кнопку "Начать".Красный шарик начнет двигаться по экрану влево и вправо. Ваша задача - при помощи кнопок "вправо" и "влево" удерживать шарик, как можно ближе к средней границе.
+                Нажмите кнопку "Начать".Розовый шарик начнет двигаться по экрану влево и вправо. Ваша задача - при помощи кнопок "вправо" и "влево" удерживать шарик, как можно ближе к средней границе.
             </p>
         </div>
     </div>
-    <p>Управляйте синим шариком с помощью клавиш "влево" и "вправо", не давая ему отлететь от средней границы.</p>
-    <progress id="progress" value="0" max="50"></progress>
+    <p>Управляйте розовым шариком с помощью клавиш "влево" и "вправо", не давая ему отлететь от средней границы.</p>
+    <progress id="progress" value="0" max="30"></progress>
     <p>
-    <div id="box">
-        <div id="point"></div>
+    <div id="container">
+        <div id="ball"></div>
         <div id="mark"></div>
     </div>
-
-    <div id="startButton">Начать</div>
+    <p>
+        <button id="start" >Начать</button>
     <p>
     <div id="reaction"></div>
-    <div id="testScore"></div>
+    <p>
+    <div id="scoreMy"></div>
+    <p>
 
     <form id="sendForm">
-        <input type="hidden" name="test_name" id="test_name" value="Свет">
+        <input type="hidden" name="test_name" id="test_name" value="Аналоговое слежение">
         <input type="hidden" name="avg_time" id="avg_time">
         <input type="hidden" name="total_time" id="total_time">
         <input type="hidden" name="correct" id="correct">
@@ -61,6 +68,5 @@
     <script src="../../js/sendTestResult.js"></script>
     <script src="../../js/analogTrackTest.js"></script>
     <script src="../../js/modalWindowController.js"></script>
-</body>
 </body>
 </html>
