@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<?php
+    include("../../php/auth_session.php");
+?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Персонал</title>
+    <link rel="stylesheet" href="../../css/personal.css">
+    <link rel="stylesheet" href="../../css/stars.css">
+    <style>
+        body{
+            text-align: left;
+        }
+        table {
+            text-align: center;
+            width: 100%;
+            background-color:rgba(227, 196, 244, 0.4);
+            border-collapse: collapse;
+        }
+        th{
+            border-right: 1px  rgb(30, 125, 136);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+        <div id="stars4"></div>
+    </div>
+    <body>
+        <input type="checkbox" name="" id="menu-toggle">
+        <div class="overlay">
+            <label for="menu-toggle" ></label>
+        </div>
+    
+        <div class="sidebar">
+            <div class="sidebar-container">
+                <div class="brand">
+                    <h2>
+                        <span class="lab la-staylinked"></span>
+                        Lunimous Dragon
+                    </h2>
+                </div>
+    
+                <div class="sidebar-avartar">
+                    <div style="display: flex;">
+                        <img src="../../images/user_icon.jpg" alt="">
+                    </div>
+                    <div class="avartar-info">
+                        <div class="avartar-text">
+                            <h4><?php echo $_SESSION['username'];?></h4>
+                            <small>user id</small>
+                        </div>
+                        <span class="las la-angle-double-down"></span>
+                    </div>
+                </div>
+                <div class="sidebar-menu">
+                    <ul>
+                        <li>
+                            <a href="personal.html">
+                                <span class="las la-adjust"></span>
+                                <span>Результат тестов</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="personal-analytic.html">
+                                <span class="las la-analis"></span>
+                                <span>Анализ</span>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                    
+                </div>
+                <div class="sidebar-menu1">
+                    <li>
+                        <a href="" class="active">
+                            <span class="las site-user"></span>
+                            <span>Настойка</span>
+                        </a>
+                    </li>
+                </div>
+            </div>
+        </div>
+    
+        <div class="main-content">
+            <header>
+                <div class="header-title-wrapper">
+                    <label for="menu-toggle">
+                        <span class="las la-bars"></span>
+                    </label>
+                    <div class="header-title">
+                        <h1>Насторойка учетной записи</h1>
+                    </div>
+                </div>
+            </header>
+            <div>
+                <h2 style="color: azure;">Редактировать статусы</h2>
+              
+            <table style="color: azure;">
+                <tr style="height: 40px;">
+                <th>Имя пользователя</th>
+                <th>Статус</th>
+                <th>Выберите новый статус</th>
+                </tr>
+                    <?php
+                        $conn = new mysqli("localhost", "root", "", "users");
+                        $result = $conn->query("SELECT * FROM user_data");
+                            while ($r = $result->fetch_array(MYSQLI_ASSOC)) {
+                            $username = $r['username'];
+                            $cur_state = $r['state'];
+                            echo '<tr><td>'.$username.'</td>';
+                            echo '<td>'.$cur_state.'</td>';
+                            echo '<td><select class="editableSelect">
+                            <option value="Admin">Admin</option>
+                            <option value="Expert">Expert</option>
+                            <option value="Admin/Expert">Admin/Expert</option>
+                            <option value="User">User</option>
+                            </select></td>
+                            <td><button id ="'.$username.'" class="updateButton">Обновить</button></td><tr/>';
+                            } 
+                    ?>
+            </table>
+            
+            <script>
+                $(document).ready(function() {
+                    $('.updateButton').on('click', function() {
+                        var selectedId = $(this).attr('id');
+                        var selectedValue = $(this).closest('tr').find('.editableSelect').val();
+                        var selectedText = $(this).closest('tr').find('.editableSelect option:selected').text();
+                        var selectedData = {
+                            id: selectedId,
+                            value: selectedValue,
+                            text: selectedText
+                        };
+                        console.log(selectedData);
+            
+                        // Send the updated data to the server using AJAX
+                        $.ajax({
+                            type: 'POST',
+                            url: 'update_table_data.php', // Specify the URL to handle the update on the server
+                            data: selectedData,
+                            success: function(response) {
+                                console.log('Data updated successfully:', response);
+                                window.location.reload();
+                            },
+                            error: function(xhr, status, error) {
+                                console.error('Error updating data:', error);
+                            }
+                        });
+                    });
+                });
+            </script>
+            
+            </div>
+        </div>
+
+        
+</body>
+</html>

@@ -1,3 +1,6 @@
+<?php
+    include("../../php/auth_session.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Персонал</title>
     <link rel="stylesheet" href="../../css/personal.css">
+    <link rel="stylesheet" href="../../css/stars.css">
+    <style>
+        body{
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
+    <div class="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+        <div id="stars4"></div>
+    </div>
     <body>
         <input type="checkbox" name="" id="menu-toggle">
         <div class="overlay">
@@ -28,7 +43,7 @@
                     </div>
                     <div class="avartar-info">
                         <div class="avartar-text">
-                            <h4>имя пользователь</h4>
+                            <h4><?php echo $_SESSION['username'];?></h4>
                             <small>user id</small>
                         </div>
                         <span class="las la-angle-double-down"></span>
@@ -43,18 +58,17 @@
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="personal-analytic.html">
                                 <span class="las la-analis"></span>
                                 <span>Анализ</span>
                             </a>
                         </li>
                         
                     </ul>
-                    
                 </div>
                 <div class="sidebar-menu1">
                     <li>
-                        <a href="">
+                        <a href="personal-site.html">
                             <span class="las site-user"></span>
                             <span>Настойка</span>
                         </a>
@@ -75,9 +89,10 @@
                     </div>
                 </div>
                 <div class="header-action">
-                    <button class="btn btn-main">
+                    <button class="btn btn-main" id="upload">
                         <span class="las la-video">Upload</span>
                     </button>
+                    <script src="../../js/upload.js"></script>
                 </div>
             </header>
             <main>
@@ -86,7 +101,7 @@
                     <div class="analytics">
                         <div class="analytic">
                             <div class="analytic-icon">
-                                <span class="test1"></span>
+                                <span class="test1">🔊</span>
                             </div>
                             <div class="analytic-info">
                                 <h4>Реакция на звук</h4>
@@ -96,7 +111,7 @@
                         </div>
                         <div class="analytic">
                             <div class="analytic-icon">
-                                <span class="test1"></span>
+                                <span class="test1">🔊</span>
                             </div>
                             <div class="analytic-info">
                                 <h4>Реакция на звук (сложная)</h4>
@@ -106,7 +121,7 @@
                         </div>
                         <div class="analytic">
                             <div class="analytic-icon">
-                                <span class="test2"></span>
+                                <span class="test2">🎆</span>
                             </div>
                             <div class="analytic-info">
                                 <h4>Реакция на свет (простая)</h4>
@@ -116,7 +131,7 @@
                         </div>
                         <div class="analytic">
                             <div class="analytic-icon">
-                                <span class="test3"></span>
+                                <span class="test3">🎆</span>
                             </div>
                             <div class="analytic-info">
                                 <h4>Реакция на свет (сложная)</h4>
@@ -126,7 +141,7 @@
                         </div>
                         <div class="analytic">
                             <div class="analytic-icon">
-                                <span class="test4"></span>
+                                <span class="test4">🧮</span>
                             </div>
                             <div class="analytic-info">
                                 <h4>Реакция на цифровые сигналы</h4>
@@ -136,7 +151,7 @@
                         </div>
                         <div class="analytic">
                             <div class="analytic-icon">
-                                <span class="test5"></span>
+                                <span class="test5">🤾‍♀️</span>
                             </div>
                             <div class="analytic-info">
                                 <h4>РДО (простая)</h4>
@@ -146,7 +161,7 @@
                         </div>
                         <div class="analytic">
                             <div class="analytic-icon">
-                                <span class="test6"></span>
+                                <span class="test6">🤾‍♀️</span>
                             </div>
                             <div class="analytic-info">
                                 <h4>РДО (сложная)</h4>
@@ -156,7 +171,7 @@
                         </div>
                         <div class="analytic">
                             <div class="analytic-icon">
-                                <span class="test7"></span>
+                                <span class="test7">🕵️</span>
                             </div>
                             <div class="analytic-info">
                                 <h4>Аналоговое слежение</h4>
@@ -166,7 +181,7 @@
                         </div>
                         <div class="analytic">
                             <div class="analytic-icon">
-                                <span class="test8"></span>
+                                <span class="test8">🕵️</span>
                             </div>
                             <div class="analytic-info">
                                 <h4>Аналоговое преследование</h4>
@@ -176,7 +191,7 @@
                         </div>
                         <div class="analytic">
                             <div class="analytic-icon">
-                                <span class="test9"></span>
+                                <span class="test9">🫵</span>
                             </div>
                             <div class="analytic-info">
                                 <h4>Внимание</h4>
@@ -186,7 +201,7 @@
                         </div>
                         <div class="analytic">
                             <div class="analytic-icon">
-                                <span class="test10"></span>
+                                <span class="test10">🧠</span>
                             </div>
                             <div class="analytic-info">
                                 <h4>Память</h4>
@@ -196,7 +211,7 @@
                         </div>
                         <div class="analytic">
                             <div class="analytic-icon">
-                                <span class="test11"></span>
+                                <span class="test11">💭</span>
                             </div>
                             <div class="analytic-info">
                                 <h4>Мышление</h4>
@@ -210,7 +225,7 @@
                 <section>
                     <div class="block-grid">
                         <div class="revenue-card">
-                            <h3 class="section-head">Карьерная ориентация</h3>
+                            <h3 class="section-head" style="text-align: center;">Карьерная ориентация</h3>
                             <div class="rev-content">
                                 <img src="../../images/data.png" alt="">
                                 <div class="rev-info">
@@ -219,7 +234,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="graph-card">
+                        <div class="graph-card" style="align-items: center;">
                             <h3 class="section-head">Graph</h3>
                             <div class="graph-content">
                                 <div class="graph-head">
@@ -233,7 +248,20 @@
                                     </div>
                                     <div class="graph-select">
                                         <select name="" id="">
-                                            <option value="">September</option>
+                                            <option value="">Реакция на звук</option>
+                                            <option value="">Реакция на звук (сложная)</option>
+                                            <option value="">Реакция на свет</option>
+                                            <option value="">Реакция на свет (сложная)</option>
+
+                                            <option value="">Реакция на цифровые сигналы</option>
+                                            <option value="">РДО</option>
+                                            <option value="">РДО (сложная)</option>
+                                            <option value="">Аналоговое слежение</option>
+
+                                            <option value="">Аналоговое преследование</option>
+                                            <option value="">Внимание</option>
+                                            <option value="">Память</option>
+                                            <option value="">Мышление</option>
                                         </select>
                                     </div>
                                 </div>
@@ -241,7 +269,120 @@
                                     <canvas id="revenueChart"></canvas>
                                 </div>
                             </div>
-                        </div> -->
+                            <!-- <?php
+                                $conn = new mysqli("localhost", "root", "", "users");
+                                $username = $_SESSION['username'];
+                                $result = $conn->query("SELECT id FROM user_data WHERE username = '$username'");
+                                $row = $result->fetch_array(MYSQLI_ASSOC);
+                                $user_id = (int) $row['id'];
+
+                                $check_table = $conn->query("SHOW TABLES LIKE 'test_results'");
+                                if ($check_table->num_rows==0) {
+                                    echo '';
+                                }
+                                else {
+                                    $res = $conn->query("SELECT * FROM test_results WHERE user_id = $user_id");
+                                    if ($res->num_rows==0) {
+                                        echo '';
+                                    }
+                                else {
+                                    echo '';
+                                    echo '';
+                                    while ($r = $res->fetch_array(MYSQLI_ASSOC)) {
+                                        echo '<tr>'.$r['correct'].'</td></tr>';
+                                        
+                                    }
+                                }
+                            }
+                            ?> -->
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
+                            <script>
+                                Chart.defaults.global.defaultFontFamily = "Kanit";
+                                let ctx = document.querySelector("#revenueChart");
+
+                                let revChart = new Chart(ctx,{
+                                    type:"line",
+                                    data:{
+                                        labels:["Sept 1","Sept 3","Sept 6","Sept 9","Sept 12","Sept 15"
+                                        ,"Sept 18","Sept 21","Sept 24","Sept 27","Sept 30"],
+                                        datasets:[
+                                            
+                                            {
+                                                label:"WatchTime",
+                                                borderColor:"green",
+                                                borderWidth:"3",
+                                                backgroundColor:"rgba(235,247,245,0.7)",
+                                                data:[0,30,60,25,60,25,50,10,50,90,120]
+                                            },
+                                            // {
+                                            //     label:"TotalViews",
+                                            //     borderColor:"blue",
+                                            //     borderWidth:"3",
+                                            //     backgroundColor:"rgba(233,238,253,0.7)",
+                                            //     data:[0,60,25,100,20,75,30,55,20,60,20]
+                                            // }
+                                        ]
+                                    },
+                                    options:{
+                                        responsive:true,
+                                        tooltips:{
+                                            intersect:false,
+                                            node:"index",
+                                        }
+                                    }
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class="test-card" style="align-items: center; margin-top: 50px;">
+                        <?php
+                            $conn = new mysqli("localhost", "root", "", "users");
+                            $username = $_SESSION['username'];
+                            $result = $conn->query("SELECT id FROM user_data WHERE username = '$username'");
+                            $row = $result->fetch_array(MYSQLI_ASSOC);
+                            $user_id = (int) $row['id'];
+
+                            $check_table = $conn->query("SHOW TABLES LIKE 'test_results'");
+                            if ($check_table->num_rows==0) {
+                                echo '<div class="no-table" style="margin: auto;">
+                                        <p style="color: azure; margin: 0px 0px 30px;">Результат пока нет, нажимите на тестирование</p>
+                                        <button class="btn btn-main" style="margin: auto;">
+                                            <span class="las la-video">
+                                                <a href="../test.html" style="color: #ffffff;">Начать тестирование</a>
+                                            </span>
+                                        </button>
+                                    </div>';
+                            }
+                            else {
+                                $res = $conn->query("SELECT * FROM test_results WHERE user_id = $user_id");
+                                if ($res->num_rows==0) {
+                                    echo '<div class="no-table" style="margin: auto;">
+                                            <p style="color: azure; margin: 0px 0px 30px;">Результат пока нет, нажимите на тестирование</p>
+                                            <button class="btn btn-main" style="margin: auto;">
+                                                <span class="las la-video">
+                                                    <a href="../test.html" style="color: #ffffff;">Начать тестирование</a>
+                                                </span>
+                                            </button>
+                                        </div>';
+                                }
+                                else {
+                                    echo '<div style="margin: 0px 0px 30px;">
+                                            <button class="btn btn-main">
+                                                <span class="las la-video">
+                                                    <a href="../test.html" style="color: #ffffff;">Начать тестирование</a>
+                                                </span>
+                                            </button>
+                                        </div>';
+                                    echo '<table style="width: 100%; text-align: center ;color: azure; background-color: rgba(239, 211, 255, 0.23); border-collapse: collapse;"><tr><th>Тест</th><th>avg_time</th><th>total_time</th><th>correct</th><th>misses</th><th>score</th></tr>';
+                                    while ($r = $res->fetch_array(MYSQLI_ASSOC)) {
+                                        echo '<tr><td>'.$r['test_name'].'</td><td>'.$r['avg_time'].'</td><td>'.$r['total_time'].'</td><td>'.$r['correct'].'</td><td>'.$r['misses'].'</td><td>'.$r['score'].'</td></tr>';
+                                        
+                                    }
+                                }
+                                
+                            }
+                            
+                        ?>
                     </div>
                 </section>
     
