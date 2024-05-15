@@ -41,22 +41,33 @@ include("../php/auth_session.php");
 <table>
     <tr style="height: 40px;">
     <th>Имя пользователя</th>
-    <th>Статус</th>
-    <th>Выберите новый статус</th>
+    <th>Админ/Эксперт/Пользователь</th>
+    <th>Админ</th>
+    <th>Эксперт</th>
     </tr>
 <?php
     $conn = new mysqli("localhost", "root", "", "users");
     $result = $conn->query("SELECT * FROM user_data");
         while ($r = $result->fetch_array(MYSQLI_ASSOC)) {
         $username = $r['username'];
-        $cur_state = $r['state'];
+        $admin = $r['admin'];
+        $expert = $r['expert'];
         echo '<tr><td>'.$username.'</td>';
-        echo '<td>'.$cur_state.'</td>';
-        echo '<td><select class="editableSelect">
-        <option value="Admin">Admin</option>
-        <option value="Expert">Expert</option>
-        <option value="Admin/Expert">Admin/Expert</option>
-        <option value="User">User</option>
+        if (($admin == 1) && ($expert == 1))
+            echo "<td>Админ/Эксперт</td>";
+        else if ($admin == 1)
+            echo '<td>Админ</td>';
+        else if ($expert == 1)
+            echo '<td>Эксперт</td>';
+        else 
+            echo '<td>Пользователь</td>';
+        echo '<td><select class="editableSelect" id="admin">
+            <option value=1>Админ</option>
+            <option value=0>Не админ</option>
+        </select></td>';
+        echo '<td><select class="editableSelect" id="expert">
+            <option value=1>Эксперт</option>
+            <option value=0>Не эксперт</option>
         </select></td>
         <td><button id ="'.$username.'" class="updateButton">Обновить</button></td><tr/>';
         } 
@@ -67,12 +78,12 @@ include("../php/auth_session.php");
     $(document).ready(function() {
         $('.updateButton').on('click', function() {
             var selectedId = $(this).attr('id');
-            var selectedValue = $(this).closest('tr').find('.editableSelect').val();
-            var selectedText = $(this).closest('tr').find('.editableSelect option:selected').text();
+            var admin = $(this).closest('tr').find('#admin option:selected').val();
+            var expert = $(this).closest('tr').find('#expert option:selected').val();
             var selectedData = {
                 id: selectedId,
-                value: selectedValue,
-                text: selectedText
+                admin: admin,
+                expert: expert
             };
             console.log(selectedData);
 
