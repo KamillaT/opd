@@ -1,0 +1,196 @@
+/* globalResults.css */
+
+/* General Styles */
+
+a.return-button {
+  display: inline-block;
+  margin: 20px;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #fe8401;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+a.return-button:hover {
+    background-color: #f3953d;
+}
+  
+  h3.title {
+    margin-top: 0;
+    color: #fff;
+  }
+  
+  p.hint {
+    color: #999;
+    text-align: center;
+    font-style: italic;
+    margin: 20px 0;
+  }
+  
+  /* Chart Styles */
+  .flex-wrapper {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+    color: #fff;
+  }
+  
+  .single-chart {
+    width: 200px;
+    text-align: center;
+    color: #fff;
+  }
+
+  .title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  
+  .circular-chart {
+    display: block;
+    margin: 10px auto;
+    max-width: 80%;
+    max-height: 250px;
+  }
+  
+  .circle-bg {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 3.8;
+  }
+  
+  .circle {
+    fill: none;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards;
+  }
+
+  .circle text{
+    color: #fff;
+  }
+
+  .text1 {
+    color: #fff
+  }
+  
+  .percentage {
+    font-family: Arial, sans-serif;
+    font-size: 0.5rem;
+    text-anchor: middle;
+  }
+  
+  /* Стили для первой диаграммы */
+
+.orange .circle {
+    stroke: #fe8401;
+}
+
+#dPath1 {
+    animation-delay: 0.5s;
+}
+
+/* Стили для второй диаграммы */
+
+.green .circle {
+    stroke: #00a78f;
+}
+
+#dPath2 {
+    animation-delay: 1s;
+}
+
+/* Стили для третьей диаграммы */
+
+.blue .circle {
+    stroke: #0099cc;
+}
+
+#dPath3 {
+    animation-delay: 1.5s;
+}
+
+/* Анимация диаграмм */
+
+@keyframes progress {
+    0% {
+        stroke-dasharray: 0 100;
+    }
+}
+  
+  /* Profession Styles */
+  .professions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    
+  }
+  
+  .profession {
+    
+    width: 320px;
+    padding: 10px;
+    background: #ffffff3d;
+    border-top: 1px solid #ffffffa5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+
+  .profession h3{
+    text-align: center;
+  }
+  
+  .description {
+    color: #666;
+  }
+  
+  /* Quality Styles */
+  .qualities {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 50px;
+  }
+  
+  .quality {
+    width: 300px;
+    margin-bottom: 20px;
+  }
+  
+  .name {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .progress {
+    background-color: #eee;
+    border-radius: 5px;
+    width: 100%;
+  }
+
+
+.progress::-webkit-progress-value {
+  background-color: #fe8401;
+}
+.progress::-moz-progress-bar {
+  background-color: #fe8401; 
+}
+.progress::-ms-fill {
+  background-color: #fe8401;
+}
+#dText2 {
+  fill: white;
+}
+#dText1 {
+  fill: white;
+}
+#dText3 {
+  fill: white;
+}
+#description {
+  color:white;
+}

@@ -107,7 +107,7 @@ document.getElementById('black').addEventListener('click', function () {
 function checkAnswer(clickedColor) {
     const reactionTime = new Date().getTime() - startTime;
     let averageReactionTimePercent;
-    if (count >= 20) {
+    if (count > 20) {
         document.getElementById('word').innerHTML = 'Тест завершен!';
         centerStartButton(); 
         startButton.style.display = 'block';
@@ -116,9 +116,9 @@ function checkAnswer(clickedColor) {
         const averageIncorrectReactionTime = wrongReactionTime / (count - rightAnswers);
         document.getElementById('scores').innerHTML = `Среднее время реакции на правильные ответы: ${averageCorrectReactionTime.toFixed(2)} мс, на неправильные ответы: ${averageIncorrectReactionTime.toFixed(2)} мс`;
         const averageReactionTime = (rightAnswers > 0) ? averageCorrectReactionTime : 0;
-        averageReactionTimePercent = ((averageReactionTime / 1000) * 100).toFixed(0);
+        averageReactionTimePercent = ((averageReactionTime / rightReactionTime + wrongReactionTime) / 10).toFixed(0);
         //sendForm
-        document.getElementById("score").value = averageReactionTimePercent;
+        document.getElementById("score").value = rightAnswers/count*100;
         document.getElementById('avg_time').value = averageReactionTime;
         document.getElementById("correct").value = rightAnswers;
         document.getElementById("submit-button").click();

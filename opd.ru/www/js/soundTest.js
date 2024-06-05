@@ -36,7 +36,7 @@ function playSound() {
     document.addEventListener('keydown', listener);
     if (attempt === max_attempt) {
         average.innerText += `Среднее время реакции: ${averageReactionTime.toFixed(2)} миллисекунд.`;
-        averagePercent = ((averageReactionTime / delay) * 100).toFixed(2);
+        averagePercent = ((averageReactionTime / totalReactionTime) * 100).toFixed(2);
 
         document.querySelector(".start").style.display = "block";
 

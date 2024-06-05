@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
     <title>Персонал</title>
     <link rel="stylesheet" href="../../css/personal.css">
     <link rel="stylesheet" href="../../css/stars.css">
@@ -76,7 +77,14 @@
                 </div>
             </div>
         </div>
-    
+        <?php
+            $conn = new mysqli("localhost", "root", "", "users");
+            $username = $_SESSION['username'];
+            $result = $conn->query("SELECT id FROM user_data WHERE username = '$username'");
+            $row = $result->fetch_array(MYSQLI_ASSOC);
+            $uid = (int) $row['id'];
+            $check_table = $conn->query("SHOW TABLES LIKE 'test_results'");
+        ?>
         <div class="main-content">
             <header>
                 <div class="header-title-wrapper">
@@ -88,12 +96,12 @@
                         <p>Ваши результаты тестов на нашем сайте ————<span class="las la-chart-line"></span></p>
                     </div>
                 </div>
-                <div class="header-action">
+                <!-- <div class="header-action">
                     <button class="btn btn-main" id="upload">
                         <span class="las la-video">Upload</span>
                     </button>
                     <script src="../../js/upload.js"></script>
-                </div>
+                </div> -->
             </header>
             <main>
                 <section>
@@ -105,28 +113,48 @@
                             </div>
                             <div class="analytic-info">
                                 <h4>Реакция на звук</h4>
-                                <h2>ball</h2>
-                                <h5>попыток:</h5>
+                                <?php
+                                    $test_id = 6;
+                                    $sql = "SELECT user_id, test_id, ROUND(AVG(score), 2) AS avg_score, COUNT(*) AS test_count FROM test_results GROUP BY user_id, test_id";
+                                    $result = $conn->query($sql);
+                                    while($row = $result->fetch_assoc()) {
+                                        $user_id = $row["user_id"];
+                                        $t_id = $row["test_id"];
+                                        $avg_score = $row["avg_score"];
+                                        $test_count = $row["test_count"];
+                                
+                                        if ($t_id == $test_id and $user_id == $uid) {
+                                            echo '<h2>'.$avg_score.'</h2>';
+                                            echo '<h5>попыток：'.$test_count.'</h5>';
+                                            break;
+                                        }
+                                    }
+                                ?>
                             </div>
                         </div>
                         <div class="analytic">
                             <div class="analytic-icon">
-                                <span class="test1">🔊</span>
+                                <span class="test2">🔊</span>
                             </div>
                             <div class="analytic-info">
                                 <h4>Реакция на звук (сложная)</h4>
-                                <h2>ball</h2>
-                                <h5>попыток:</h5>
-                            </div>
-                        </div>
-                        <div class="analytic">
-                            <div class="analytic-icon">
-                                <span class="test2">🎆</span>
-                            </div>
-                            <div class="analytic-info">
-                                <h4>Реакция на свет (простая)</h4>
-                                <h2>ball</h2>
-                                <h5>попыток:</h5>
+                                <?php
+                                    $test_id = 3;
+                                    $sql = "SELECT user_id, test_id, ROUND(AVG(score), 2) AS avg_score, COUNT(*) AS test_count FROM test_results GROUP BY user_id, test_id";
+                                    $result = $conn->query($sql);
+                                    while($row = $result->fetch_assoc()) {
+                                        $user_id = $row["user_id"];
+                                        $t_id = $row["test_id"];
+                                        $avg_score = $row["avg_score"];
+                                        $test_count = $row["test_count"];
+                                
+                                        if ($t_id == $test_id and $user_id == $uid) {
+                                            echo '<h2>'.$avg_score.'</h2>';
+                                            echo '<h5>попыток：'.$test_count.'</h5>';
+                                            break;
+                                        }
+                                    }
+                                ?>
                             </div>
                         </div>
                         <div class="analytic">
@@ -134,29 +162,74 @@
                                 <span class="test3">🎆</span>
                             </div>
                             <div class="analytic-info">
-                                <h4>Реакция на свет (сложная)</h4>
-                                <h2>ball</h2>
-                                <h5>попыток:</h5>
+                                <h4>Реакция на свет (простая)</h4>
+                                <?php
+                                    $test_id = 1;
+                                    $sql = "SELECT user_id, test_id, ROUND(AVG(score), 2) AS avg_score, COUNT(*) AS test_count FROM test_results GROUP BY user_id, test_id";
+                                    $result = $conn->query($sql);
+                                    while($row = $result->fetch_assoc()) {
+                                        $user_id = $row["user_id"];
+                                        $t_id = $row["test_id"];
+                                        $avg_score = $row["avg_score"];
+                                        $test_count = $row["test_count"];
+                                
+                                        if ($t_id == $test_id and $user_id == $uid) {
+                                            echo '<h2>'.$avg_score.'</h2>';
+                                            echo '<h5>попыток：'.$test_count.'</h5>';
+                                            break;
+                                        }
+                                    }
+                                ?>
                             </div>
                         </div>
                         <div class="analytic">
                             <div class="analytic-icon">
-                                <span class="test4">🧮</span>
+                                <span class="test4">🎆</span>
+                            </div>
+                            <div class="analytic-info">
+                                <h4>Реакция на свет (сложная)</h4>
+                                <?php
+                                    $test_id = 2;
+                                    $sql = "SELECT user_id, test_id, ROUND(AVG(score), 2) AS avg_score, COUNT(*) AS test_count FROM test_results GROUP BY user_id, test_id";
+                                    $result = $conn->query($sql);
+                                    while($row = $result->fetch_assoc()) {
+                                        $user_id = $row["user_id"];
+                                        $t_id = $row["test_id"];
+                                        $avg_score = $row["avg_score"];
+                                        $test_count = $row["test_count"];
+                                
+                                        if ($t_id == $test_id and $user_id == $uid) {
+                                            echo '<h2>'.$avg_score.'</h2>';
+                                            echo '<h5>попыток：'.$test_count.'</h5>';
+                                            break;
+                                        }
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                        <div class="analytic">
+                            <div class="analytic-icon">
+                                <span class="test5">🧮</span>
                             </div>
                             <div class="analytic-info">
                                 <h4>Реакция на цифровые сигналы</h4>
-                                <h2>ball</h2>
-                                <h5>попыток:</h5>
-                            </div>
-                        </div>
-                        <div class="analytic">
-                            <div class="analytic-icon">
-                                <span class="test5">🤾‍♀️</span>
-                            </div>
-                            <div class="analytic-info">
-                                <h4>РДО (простая)</h4>
-                                <h2>ball</h2>
-                                <h5>попыток:</h5>
+                                <?php
+                                    $test_id = 7;
+                                    $sql = "SELECT user_id, test_id, ROUND(AVG(score), 2) AS avg_score, COUNT(*) AS test_count FROM test_results GROUP BY user_id, test_id";
+                                    $result = $conn->query($sql);
+                                    while($row = $result->fetch_assoc()) {
+                                        $user_id = $row["user_id"];
+                                        $t_id = $row["test_id"];
+                                        $avg_score = $row["avg_score"];
+                                        $test_count = $row["test_count"];
+                                
+                                        if ($t_id == $test_id and $user_id == $uid) {
+                                            echo '<h2>'.$avg_score.'</h2>';
+                                            echo '<h5>попыток：'.$test_count.'</h5>';
+                                            break;
+                                        }
+                                    }
+                                ?>
                             </div>
                         </div>
                         <div class="analytic">
@@ -164,19 +237,49 @@
                                 <span class="test6">🤾‍♀️</span>
                             </div>
                             <div class="analytic-info">
-                                <h4>РДО (сложная)</h4>
-                                <h2>ball</h2>
-                                <h5>попыток:</h5>
+                                <h4>РДО (простая)</h4>
+                                <?php
+                                    $test_id = 4;
+                                    $sql = "SELECT user_id, test_id, ROUND(AVG(score), 2) AS avg_score, COUNT(*) AS test_count FROM test_results GROUP BY user_id, test_id";
+                                    $result = $conn->query($sql);
+                                    while($row = $result->fetch_assoc()) {
+                                        $user_id = $row["user_id"];
+                                        $t_id = $row["test_id"];
+                                        $avg_score = $row["avg_score"];
+                                        $test_count = $row["test_count"];
+                                
+                                        if ($t_id == $test_id and $user_id == $uid) {
+                                            echo '<h2>'.$avg_score.'</h2>';
+                                            echo '<h5>попыток：'.$test_count.'</h5>';
+                                            break;
+                                        }
+                                    }
+                                ?>
                             </div>
                         </div>
                         <div class="analytic">
                             <div class="analytic-icon">
-                                <span class="test7">🕵️</span>
+                                <span class="test7">🤾‍♀️</span>
                             </div>
                             <div class="analytic-info">
-                                <h4>Аналоговое слежение</h4>
-                                <h2>ball</h2>
-                                <h5>попыток:</h5>
+                                <h4>РДО (сложная)</h4>
+                                <?php
+                                    $test_id = 5;
+                                    $sql = "SELECT user_id, test_id, ROUND(AVG(score), 2) AS avg_score, COUNT(*) AS test_count FROM test_results GROUP BY user_id, test_id";
+                                    $result = $conn->query($sql);
+                                    while($row = $result->fetch_assoc()) {
+                                        $user_id = $row["user_id"];
+                                        $t_id = $row["test_id"];
+                                        $avg_score = $row["avg_score"];
+                                        $test_count = $row["test_count"];
+                                
+                                        if ($t_id == $test_id and $user_id == $uid) {
+                                            echo '<h2>'.$avg_score.'</h2>';
+                                            echo '<h5>попыток：'.$test_count.'</h5>';
+                                            break;
+                                        }
+                                    }
+                                ?>
                             </div>
                         </div>
                         <div class="analytic">
@@ -184,39 +287,124 @@
                                 <span class="test8">🕵️</span>
                             </div>
                             <div class="analytic-info">
-                                <h4>Аналоговое преследование</h4>
-                                <h2>ball</h2>
-                                <h5>попыток:</h5>
+                                <h4>Аналоговое слежение</h4>
+                                <?php
+                                    $test_id = 10;
+                                    $sql = "SELECT user_id, test_id, ROUND(AVG(score), 2) AS avg_score, COUNT(*) AS test_count FROM test_results GROUP BY user_id, test_id";
+                                    $result = $conn->query($sql);
+                                    while($row = $result->fetch_assoc()) {
+                                        $user_id = $row["user_id"];
+                                        $t_id = $row["test_id"];
+                                        $avg_score = $row["avg_score"];
+                                        $test_count = $row["test_count"];
+                                
+                                        if ($t_id == $test_id and $user_id == $uid) {
+                                            echo '<h2>'.$avg_score.'</h2>';
+                                            echo '<h5>попыток：'.$test_count.'</h5>';
+                                            break;
+                                        }
+                                    }
+                                ?>
                             </div>
                         </div>
                         <div class="analytic">
                             <div class="analytic-icon">
-                                <span class="test9">🫵</span>
+                                <span class="test9">🕵️</span>
+                            </div>
+                            <div class="analytic-info">
+                                <h4>Аналоговое преследование</h4>
+                                <?php
+                                    $test_id = 8;
+                                    $sql = "SELECT user_id, test_id, ROUND(AVG(score), 2) AS avg_score, COUNT(*) AS test_count FROM test_results GROUP BY user_id, test_id";
+                                    $result = $conn->query($sql);
+                                    while($row = $result->fetch_assoc()) {
+                                        $user_id = $row["user_id"];
+                                        $t_id = $row["test_id"];
+                                        $avg_score = $row["avg_score"];
+                                        $test_count = $row["test_count"];
+                                
+                                        if ($t_id == $test_id and $user_id == $uid) {
+                                            echo '<h2>'.$avg_score.'</h2>';
+                                            echo '<h5>попыток：'.$test_count.'</h5>';
+                                            break;
+                                        }
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                        <div class="analytic">
+                            <div class="analytic-icon">
+                                <span class="test10">🫵</span>
                             </div>
                             <div class="analytic-info">
                                 <h4>Внимание</h4>
-                                <h2>ball</h2>
-                                <h5>попыток:</h5>
+                                <?php
+                                    $test_id = 9;
+                                    $sql = "SELECT user_id, test_id, ROUND(AVG(score), 2) AS avg_score, COUNT(*) AS test_count FROM test_results GROUP BY user_id, test_id";
+                                    $result = $conn->query($sql);
+                                    while($row = $result->fetch_assoc()) {
+                                        $user_id = $row["user_id"];
+                                        $t_id = $row["test_id"];
+                                        $avg_score = $row["avg_score"];
+                                        $test_count = $row["test_count"];
+                                
+                                        if ($t_id == $test_id and $user_id == $uid) {
+                                            echo '<h2>'.$avg_score.'</h2>';
+                                            echo '<h5>попыток：'.$test_count.'</h5>';
+                                            break;
+                                        }
+                                    }
+                                ?>
                             </div>
                         </div>
                         <div class="analytic">
                             <div class="analytic-icon">
-                                <span class="test10">🧠</span>
+                                <span class="test11">🧠</span>
                             </div>
                             <div class="analytic-info">
                                 <h4>Память</h4>
-                                <h2>ball</h2>
-                                <h5>попыток:</h5>
+                                <?php
+                                    $test_id = 11;
+                                    $sql = "SELECT user_id, test_id, ROUND(AVG(score), 2) AS avg_score, COUNT(*) AS test_count FROM test_results GROUP BY user_id, test_id";
+                                    $result = $conn->query($sql);
+                                    while($row = $result->fetch_assoc()) {
+                                        $user_id = $row["user_id"];
+                                        $t_id = $row["test_id"];
+                                        $avg_score = $row["avg_score"];
+                                        $test_count = $row["test_count"];
+                                
+                                        if ($t_id == $test_id and $user_id == $uid) {
+                                            echo '<h2>'.$avg_score.'</h2>';
+                                            echo '<h5>попыток：'.$test_count.'</h5>';
+                                            break;
+                                        }
+                                    }
+                                ?>
                             </div>
                         </div>
                         <div class="analytic">
                             <div class="analytic-icon">
-                                <span class="test11">💭</span>
+                                <span class="test12">💭</span>
                             </div>
                             <div class="analytic-info">
                                 <h4>Мышление</h4>
-                                <h2>ball</h2>
-                                <h5>попыток:</h5>
+                                <?php
+                                    $test_id = 12;
+                                    $sql = "SELECT user_id, test_id, ROUND(AVG(score), 2) AS avg_score, COUNT(*) AS test_count FROM test_results GROUP BY user_id, test_id";
+                                    $result = $conn->query($sql);
+                                    while($row = $result->fetch_assoc()) {
+                                        $user_id = $row["user_id"];
+                                        $t_id = $row["test_id"];
+                                        $avg_score = $row["avg_score"];
+                                        $test_count = $row["test_count"];
+                                
+                                        if ($t_id == $test_id and $user_id == $uid) {
+                                            echo '<h2>'.$avg_score.'</h2>';
+                                            echo '<h5>попыток：'.$test_count.'</h5>';
+                                            break;
+                                        }
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -227,14 +415,40 @@
                         <div class="revenue-card">
                             <h3 class="section-head" style="text-align: center;">Карьерная ориентация</h3>
                             <div class="rev-content">
-                                <img src="../../images/data.png" alt="">
                                 <div class="rev-info">
                                     <h3>Профессия</h3>
-                                    <h1>название профессия</h1>
+                                    <img src="../../images/data.png" alt="">
+                                    <h3>
+                                        <?php
+                                        include("sum.php");
+                                        for ($i = 0; $i < count($max_jobs); $i++) {
+                                            echo $max_jobs[$i]."</br>" ;
+                                        }
+                                        ?>
+                                    </h3>
                                 </div>
                             </div>
                         </div>
                         <div class="graph-card" style="align-items: center;">
+                            <?php
+
+                            $conn = new mysqli("localhost", "root", "", "users");
+                            $username = $_SESSION['username'];
+                            $result = $conn->query("SELECT id FROM user_data WHERE username = '$username'");
+                            $row = $result->fetch_array(MYSQLI_ASSOC);
+                            $uid = (int) $row['id'];
+                            $sql = "SELECT * FROM test_results WHERE user_id = '$uid'";
+                            $result = $conn->query($sql);
+
+                            $data = array();
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    $data[] = $row;
+                                }
+                            }
+
+                            $json_scores = json_encode($data);
+                            ?>
                             <h3 class="section-head">Graph</h3>
                             <div class="graph-content">
                                 <div class="graph-head">
@@ -247,102 +461,90 @@
                                         </div>
                                     </div>
                                     <div class="graph-select">
-                                        <select name="" id="">
-                                            <option value="">Реакция на звук</option>
-                                            <option value="">Реакция на звук (сложная)</option>
-                                            <option value="">Реакция на свет</option>
-                                            <option value="">Реакция на свет (сложная)</option>
+                                        <select name="" id="testSelect">
+                                            <option value="6">Реакция на звук</option>
+                                            <option value="3">Реакция на звук (сложная)</option>
+                                            <option value="1">Реакция на свет</option>
+                                            <option value="2">Реакция на свет (сложная)</option>
 
-                                            <option value="">Реакция на цифровые сигналы</option>
-                                            <option value="">РДО</option>
-                                            <option value="">РДО (сложная)</option>
-                                            <option value="">Аналоговое слежение</option>
+                                            <option value="7">Реакция на цифровые сигналы</option>
+                                            <option value="4">РДО</option>
+                                            <option value="5">РДО (сложная)</option>
+                                            <option value="10">Аналоговое слежение</option>
 
-                                            <option value="">Аналоговое преследование</option>
-                                            <option value="">Внимание</option>
-                                            <option value="">Память</option>
-                                            <option value="">Мышление</option>
+                                            <option value="8">Аналоговое преследование</option>
+                                            <option value="9">Внимание</option>
+                                            <option value="11">Память</option>
+                                            <option value="12">Мышление</option>
                                         </select>
+                                        
                                     </div>
                                 </div>
                                 <div class="graph-board">
-                                    <canvas id="revenueChart"></canvas>
+                                    <canvas id="myChart"></canvas>
                                 </div>
                             </div>
-                            <!-- <?php
-                                $conn = new mysqli("localhost", "root", "", "users");
-                                $username = $_SESSION['username'];
-                                $result = $conn->query("SELECT id FROM user_data WHERE username = '$username'");
-                                $row = $result->fetch_array(MYSQLI_ASSOC);
-                                $user_id = (int) $row['id'];
-
-                                $check_table = $conn->query("SHOW TABLES LIKE 'test_results'");
-                                if ($check_table->num_rows==0) {
-                                    echo '';
-                                }
-                                else {
-                                    $res = $conn->query("SELECT * FROM test_results WHERE user_id = $user_id");
-                                    if ($res->num_rows==0) {
-                                        echo '';
-                                    }
-                                else {
-                                    echo '';
-                                    echo '';
-                                    while ($r = $res->fetch_array(MYSQLI_ASSOC)) {
-                                        echo '<tr>'.$r['correct'].'</td></tr>';
-                                        
-                                    }
-                                }
-                            }
-                            ?> -->
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
                             <script>
-                                Chart.defaults.global.defaultFontFamily = "Kanit";
-                                let ctx = document.querySelector("#revenueChart");
+                                var data = <?php echo json_encode($data); ?>;
+                                var ctx = document.getElementById('myChart').getContext('2d');
+                                var myChart;
+                                testId = 6;
+                                drawChart(testId);
+                             
+                                function drawChart(testId) {
+                                    var testData = data.filter(function(item) {
+                                        return item.test_id == testId;
+                                    });
 
-                                let revChart = new Chart(ctx,{
-                                    type:"line",
-                                    data:{
-                                        labels:["Sept 1","Sept 3","Sept 6","Sept 9","Sept 12","Sept 15"
-                                        ,"Sept 18","Sept 21","Sept 24","Sept 27","Sept 30"],
-                                        datasets:[
-                                            
-                                            {
-                                                label:"WatchTime",
-                                                borderColor:"green",
-                                                borderWidth:"3",
-                                                backgroundColor:"rgba(235,247,245,0.7)",
-                                                data:[0,30,60,25,60,25,50,10,50,90,120]
-                                            },
-                                            // {
-                                            //     label:"TotalViews",
-                                            //     borderColor:"blue",
-                                            //     borderWidth:"3",
-                                            //     backgroundColor:"rgba(233,238,253,0.7)",
-                                            //     data:[0,60,25,100,20,75,30,55,20,60,20]
-                                            // }
-                                        ]
-                                    },
-                                    options:{
-                                        responsive:true,
-                                        tooltips:{
-                                            intersect:false,
-                                            node:"index",
-                                        }
+                                    var scores = testData.map(function(item) {
+                                        return item.score;
+                                    });
+
+                                    var testlength = testData.length;
+                                    var labels = Array.from({length : testlength}, (v,i) => i+1);
+
+                                    var chartData = {
+                                        labels: labels,
+                                        datasets: [{
+                                            label: 'Test Scores',
+                                            data: scores,
+                                            borderColor: 'rgba(75, 192, 192, 1)',
+                                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                            borderWidth: 1
+                                        }]
+                                    };
+
+                                    if (myChart) {
+                                        myChart.destroy();
                                     }
+
+                                    myChart = new Chart(ctx, {
+                                        type: 'line',
+                                        data: chartData,
+                                        options: {
+                                            scales: {
+                                                xAxes: [{
+                                                    title: 'Количество попытки'
+                                                }],
+                                                yAxes: [{
+                                                    title: 'результаты'
+                                                }]
+                                            }
+                                        }
+                                    });
+                                }
+
+                                var testSelect = document.getElementById('testSelect');
+                                testSelect.addEventListener('change', function() {
+                                    var testId = this.value;
+                                    drawChart(testId);
                                 });
                             </script>
                         </div>
                     </div>
                     <div class="test-card" style="align-items: center; margin-top: 50px;">
+                        
                         <?php
-                            $conn = new mysqli("localhost", "root", "", "users");
-                            $username = $_SESSION['username'];
-                            $result = $conn->query("SELECT id FROM user_data WHERE username = '$username'");
-                            $row = $result->fetch_array(MYSQLI_ASSOC);
-                            $user_id = (int) $row['id'];
-
-                            $check_table = $conn->query("SHOW TABLES LIKE 'test_results'");
                             if ($check_table->num_rows==0) {
                                 echo '<div class="no-table" style="margin: auto;">
                                         <p style="color: azure; margin: 0px 0px 30px;">Результат пока нет, нажимите на тестирование</p>
@@ -381,11 +583,9 @@
                                 }
                                 
                             }
-                            
                         ?>
                     </div>
                 </section>
-    
             </main>
         </div>
 </body>

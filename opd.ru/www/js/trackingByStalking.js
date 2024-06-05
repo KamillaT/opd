@@ -52,7 +52,7 @@ const startTest = () => {
         document.getElementById("score").value = averageResult;
         document.getElementById("submit-button").click();
 
-        centerStartButton(); 
+        // centerStartButton(); 
     }, testTime);
     startButton.style.display = "none";
     const object1MoveInterval = setInterval(() => {
@@ -126,10 +126,10 @@ object1.addEventListener("click", () => {
     reactionTime = new Date().getTime() - startTime;
 });
 
-const centerStartButton = () => {
-    const containerWidth = document.documentElement.clientWidth;
-    const buttonWidth = startButton.offsetWidth;
-    const leftMargin = (containerWidth - buttonWidth) / 2;
-    startButton.style.marginLeft = leftMargin + "px";
-};
+// const centerStartButton = () => {
+//     const containerWidth = document.documentElement.clientWidth;
+//     const buttonWidth = startButton.offsetWidth;
+//     const leftMargin = (containerWidth - buttonWidth) / 2;
+//     startButton.style.marginLeft = leftMargin + "px";
+// };
 startButton.addEventListener("click", startTest);

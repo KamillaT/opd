@@ -143,7 +143,7 @@ function thirdCircle() {
 
 function getOverallResult() {
     const averageAccuracy = ((result1 + result2 + result3) / 90).toFixed(0);
-    document.getElementById('result').innerText = `Ваша средняя точность: ${averageAccuracy}%`;
+    document.getElementById('results').innerText = `Ваша средняя точность: ${averageAccuracy}%`;
     startButton.style.display = 'block';
     startButton.disabled = false;
     document.getElementById("avg_time").value = averageAccuracy;

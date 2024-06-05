@@ -7,12 +7,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Персонал</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
     <link rel="stylesheet" href="../../css/personal.css">
     <link rel="stylesheet" href="../../css/stars.css">
+    <link rel="stylesheet" href="../../css/globalResults.css">
     <style>
         body{
             text-align: left;
         }
+        .description{
+            color: #fff;
+        }
+
+        .container {
+        display: flex;
+        justify-content: space-around;
+        padding: 20px;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+        }
+
+        .chart-container p {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            margin: 0;
+        }
+
     </style>
 </head>
 <body>
@@ -89,26 +116,180 @@
                         <p>Карьера, подходящая вам ————<span class="las la-chart-line"></span></p>
                     </div>
                 </div>
-                <div class="header-action">
-                    <button class="btn btn-main" id="upload">
-                        <span class="las la-video">Upload</span>
-                    </button>
-                    <script src="../../js/upload.js"></script>
-                </div>
             </header>
+            <?php
+                $conn = new mysqli("localhost", "root", "", "users");
+                $username = $_SESSION['username'];
+                $result = $conn->query("SELECT id FROM user_data WHERE username = '$username'");
+                $row = $result->fetch_array(MYSQLI_ASSOC);
+                $uid = (int) $row['id'];
+                $sql = "SELECT * FROM test_results WHERE user_id = '$uid'";
+                $result = $conn->query($sql);
+
+                $data1 = array();
+                $data2 = array();
+                $data3 = array();
+                $data4 = array();
+                $data5 = array();
+                $data6 = array();
+                $data7 = array();
+                $data8 = array();
+                $data9 = array();
+                $data10 = array();
+                $data11 = array();
+                $data12 = array();
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        switch($row['test_id']){
+                            case 1:
+                                $data1[] = round($row['score'], 2);
+                                break;
+                            case 2:
+                                $data2[] = round($row['score'], 2);
+                                break;
+                            case 3:
+                                $data3[] = round($row['score'], 2);
+                                break;
+                            case 4:
+                                $data4[] = round($row['score'], 2);
+                                break;
+                            case 5:
+                                $data5[] = round($row['score'], 2);
+                                break;
+                            case 6:
+                                $data6[] = round($row['score'], 2);
+                                break;
+                            case 7:
+                                $data7[] = round($row['score'], 2);
+                                break;
+                            case 8:
+                                $data8[] = round($row['score'], 2);
+                                break;
+                            case 9:
+                                $data9[] = round($row['score'], 2);
+                                break;
+                            case 10:
+                                $data10[] = round($row['score'], 2);
+                                break;
+                            case 11:
+                                $data11[] = round($row['score'], 2);
+                                break;
+                            case 12:
+                                $data12[] = round($row['score'], 2);
+                                break;
+                        }
+                    }
+                }
+                function calculateResult($datasets){
+                    if (empty($datasets)) return 0;
+                    $sum = 0;
+                    for($i = 0; $i < count($datasets); $i++) {
+                        $sum += $datasets[$i];
+                    }
+                    $sum = round($sum / count($datasets), 2);
+                    return $sum;
+                }
+                $sum1 = calculateResult($data1);
+                $sum2 = calculateResult($data2);
+                $sum3 = calculateResult($data3);
+                $sum4 = calculateResult($data4);
+                $sum5 = calculateResult($data5);
+                $sum6 = calculateResult($data6);
+                $sum7 = calculateResult($data7);
+                $sum8 = calculateResult($data8);
+                $sum9 = calculateResult($data9);
+                $sum10 = calculateResult($data10);
+                $sum11 = calculateResult($data11);
+                $sum12 = calculateResult($data12);
+
+                $result1 = round(($sum1*2 + $sum2*2 + $sum3*8 + $sum4*8 + $sum5*10 + $sum6*8 + $sum7*10 + $sum8*8 + $sum9*8 + $sum10*10 + $sum11*8 + $sum12*10)/100, 0);
+                $result2 = round(($sum1*8 + $sum2*8 + $sum3*10 + $sum4*10 + $sum6*10 + $sum8*10 + $sum9*10 + $sum10*8 + $sum11*10 + $sum12*8)/100, 0);
+                $result3 = round(($sum1*10 + $sum2*10 + $sum3*10 + $sum5*10 + $sum6*10 + $sum7*8 + $sum9*10 + $sum10*8 + $sum11*8 + $sum12*8)/100, 0);
+
+
+                $conn->close();
+            ?>
             <main>
                 <section>
-                    <h3 class="section-head"></h3>
-                    
-                </section>
-    
-                <section>
-                    <div class="block-grid">
+                    <div style="display: flexbox; justify-content: space-around;">
+                        <div class="container">
+                            <h3 class="title" style="display: flexbox;">Инженер Backend-разработчика</h3>
                         
+                            <h3 class="title" style="display: flexbox;">Инженер-разработчик баз данных</h3>
+                            
+                            <h3 class="title" style="display: flexbox;">Инженер по фронтенд-разработке</h3>
+                        </div>
+                        
+                        <div class="container">
+                            <div class="chart-container">
+                                <p><?php echo json_encode($result1); ?>%</p>
+                                <canvas id="chart1"></canvas>
+                            </div>
+                            <div class="chart-container">
+                                <p><?php echo json_encode($result2); ?>%</p>
+                                <canvas id="chart2"></canvas>
+                            </div>
+                            <div class="chart-container">
+                                <p><?php echo json_encode($result3); ?>%</p>
+                                <canvas id="chart3"></canvas>
+                            </div>
+                        </div>
                     </div>
+                    
+                    <script>
+                        var data_be = <?php echo json_encode($result1); ?>;
+                        var data_db = <?php echo json_encode($result2); ?>;
+                        var data_fe = <?php echo json_encode($result3); ?>;
+                        
+                    
+                        var ctx1 = document.getElementById("chart1").getContext('2d');
+                        var chart1 = new Chart(ctx1, {
+                        type: 'doughnut',
+                        data: {
+                            datasets: [{
+                            data: [data_be, 100-data_be],
+                            backgroundColor: ["#FF6384", "white"],
+                            borderWidth: 0
+                            }]
+                        }
+                        });
+                    
+                        var ctx1 = document.getElementById("chart2").getContext('2d');
+                        var chart2 = new Chart(ctx1, {
+                        type: 'doughnut',
+                        data: {
+                            datasets: [{
+                            data: [data_db, 100-data_db],
+                            backgroundColor: ["green", "white"],
+                            borderWidth: 0
+                            }]
+                        }
+                        });
+                    
+                        var ctx1 = document.getElementById("chart3").getContext('2d');
+                        var chart3 = new Chart(ctx1, {
+                        type: 'doughnut',
+                        data: {
+                            datasets: [{
+                            data: [data_fe, 100-data_fe],
+                            backgroundColor: ["yellow", "white"],
+                            borderWidth: 0
+                            }]
+                        }
+                        });
+                        
+                    </script>
                 </section>
-    
             </main>
+            <div class="header-title">
+                </br>
+                </br>
+                <h1 style="text-align: center;">Оценка теста</h1>
+                </br>
+            </div>
+            <div class="analytic">
+                <img src="../../images/table.png" alt="analytic-table.png" width="100%">
+            </div>
         </div>
 </body>
 </html>
