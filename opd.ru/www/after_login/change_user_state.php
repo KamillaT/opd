@@ -38,18 +38,23 @@
                 echo '<option value="'.$username.'">'.$username.'</option>';
                 }
                 echo '</select>
-                <select name="state">
-                <option value="Admin">Admin</option>
-                <option value="Expert">Expert</option>
-                <option value="Admin/Expert">Admin/Expert</option>
-                <option value="User">User</option>
+                <select name="admin">
+                <option value=1>Админ</option>
+                <option value=0>Не админ</option>
+                </select>
+                </select>
+                <select name="expert">
+                <option value=1>Эксперт</option>
+                <option value=0>Не эксперт</option>
                 </select>
                 <input type="submit" value="submit" name="submit">
                 </form>';
         if(isset($_POST['submit'])) {
             $username = $_POST['username'];
-            $state = $_POST['state'];
-            $conn->query("UPDATE user_data SET state = '$state' WHERE username = '$username'");
+            $admin = $_POST['admin'];
+            $expert = $_POST['expert'];
+            $conn->query("UPDATE user_data SET admin = $admin WHERE username = '$username'");
+            $conn->query("UPDATE user_data SET expert = $expert WHERE username = '$username'");
         }   
     ?>
 </div>

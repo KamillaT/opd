@@ -75,15 +75,12 @@
         echo '<a href="test_results.php" class="b1">Результаты тестирований</a>';
         $result = $conn->query("SELECT * FROM user_data WHERE username = '$username'");
         $row = $result->fetch_array(MYSQLI_ASSOC);
-        $state = $row['state'];
-        if ($state == 'Admin') {
+        $admin = $row['admin'];
+        $expert = $row['expert'];
+        if ($admin == 1) {
             echo '<a href="change_user_state.html" class="b1">Редактировать статусы</a>';
         }
-        else if ($state == 'Expert') {
-            echo '<a href="change_mark.html" class="b1">Редактировать оценку</a>';
-        }
-        else if ($state == 'Admin/Expert') {
-            echo '<a href="change_user_state.html" class="b1">Редактировать статусы</a>';
+        if ($expert == 1) {
             echo '<a href="change_mark.html" class="b1">Редактировать оценку</a>';
         }
     ?>

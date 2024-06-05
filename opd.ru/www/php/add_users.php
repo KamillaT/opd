@@ -95,40 +95,52 @@
 	
 	$table_name = "user_data";
 	$query_table = "CREATE TABLE IF NOT EXISTS $table_name (id INT PRIMARY KEY AUTO_INCREMENT, username VARCHAR (255) NOT NULL, 
-		pswd VARCHAR (255) NOT NULL, state VARCHAR (255) NOT NULL, age VARCHAR (45)  NOT NULL)";
+		pswd VARCHAR (255) NOT NULL, age VARCHAR (45) NOT NULL, admin BOOLEAN NOT NULL, expert BOOLEAN NOT NULL, user BOOLEAN NOT NULL)";
 	$conn->query($query_table);
 	$result = $conn->query("SELECT * FROM $table_name WHERE username = 'kami'");
 	if($result->num_rows == 0) {
-		$sql = "INSERT INTO $table_name (username, pswd, state, age, gender) VALUES ('kami', 'kami', 'Admin/Expert', '2005', 'female')";
+		$sql = "INSERT INTO $table_name (username, pswd, age, gender, admin, expert, user) VALUES ('kami', 'kami', '2005', 'female', 1, 1, 1)";
 		$conn->query($sql);
 		setAgeCategory($conn, 2005, 1);
 	}
 	else {
-		$sql = "UPDATE $table_name SET state = 'Admin/Expert' WHERE username = '$username'";
+		$sql = "UPDATE $table_name SET admin = 1 WHERE username = '$username'";
+		$conn->query($sql);
+		$sql = "UPDATE $table_name SET expert = 1 WHERE username = '$username'";
+		$conn->query($sql);
+		$sql = "UPDATE $table_name SET user = 1 WHERE username = '$username'";
 		$conn->query($sql);
 		setAgeCategory($conn, 2005, 1);
 	}
 	
 	$result = $conn->query("SELECT * FROM $table_name WHERE username = 'ruohan'");
 	if($result->num_rows == 0) {
-		$sql = "INSERT INTO $table_name (username, pswd, state, age, gender) VALUES ('ruohan', 'ruohan', 'Admin/Expert', '2003', 'female')";
+		$sql = "INSERT INTO $table_name (username, pswd, age, gender, admin, expert, user) VALUES ('ruohan', 'ruohan', '2003', 'female', 1, 1, 1)";
 		$conn->query($sql);
 		setAgeCategory($conn, 2003, 2);
 	}
-	else {
-		$sql = "UPDATE $table_name SET state = 'Admin/Expert' WHERE username = 'ruohan'";
+	else {		
+		$sql = "UPDATE $table_name SET admin = 1 WHERE username = '$username'";
+		$conn->query($sql);
+		$sql = "UPDATE $table_name SET expert = 1 WHERE username = '$username'";
+		$conn->query($sql);
+		$sql = "UPDATE $table_name SET user = 1 WHERE username = '$username'";
 		$conn->query($sql);
 		setAgeCategory($conn, 2003, 2);
 	}
 	
 	$result = $conn->query("SELECT * FROM $table_name WHERE username = 'tuan'");
 	if($result->num_rows == 0) {
-		$sql = "INSERT INTO $table_name (username, pswd, state, age, gender) VALUES ('tuan', 'tuan', 'Admin/Expert', '2003', 'male')";
+		$sql = "INSERT INTO $table_name (username, pswd, age, gender, admin, expert, user) VALUES ('tuan', 'tuan', '2003', 'male', 1, 1, 1)";
 		$conn->query($sql);
 		setAgeCategory($conn, 2003, 3);
 	}
 	else {
-		$sql = "UPDATE $table_name SET state = 'Admin/Expert' WHERE username = 'tuan'";
+		$sql = "UPDATE $table_name SET admin = 1 WHERE username = '$username'";
+		$conn->query($sql);
+		$sql = "UPDATE $table_name SET expert = 1 WHERE username = '$username'";
+		$conn->query($sql);
+		$sql = "UPDATE $table_name SET user = 1 WHERE username = '$username'";
 		$conn->query($sql);
 		setAgeCategory($conn, 2003, 3);
 	}
@@ -139,7 +151,7 @@
 	$gender = $_POST['gender'];
 	$result = $conn->query("SELECT * FROM $table_name WHERE username = '$username'");
 	if($result->num_rows == 0) {
-		$sql = "INSERT INTO $table_name (username, pswd, state, age, gender) VALUES ('$username', '$password', 'User', '$birth', '$gender')";
+		$sql = "INSERT INTO $table_name (username, pswd, age, gender, admin, expert, user) VALUES ('$username', '$password', '$birth', '$gender', 0, 0, 1)";
 		$conn->query($sql);
 
 		$result = $conn->query("SELECT id FROM $table_name WHERE username='$username'");
